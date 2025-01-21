@@ -4,22 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFilesTable extends Migration
-{
-    public function up()
+return new class extends Migration {
+    public function up(): void
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('member_id')->constrained()->onDelete('cascade');
-            $table->string('file_name');
-            $table->enum('file_type', ['CV', 'ID Card']);
-            $table->text('file_path');
+            $table->foreignId('team_id')->constrained()->onDelete('cascade'); // Relasi ke tabel teams
+            $table->string('file_path'); // Lokasi file
             $table->timestamps();
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('files');
     }
-}
+};
