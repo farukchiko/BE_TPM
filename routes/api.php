@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/register-team', [AuthController::class, 'register']);
-Route::post('/login-leader', [AuthController::class, 'login']);
+// Rute untuk registrasi
+Route::post('/register', [AuthController::class, 'register']);
 
-Route::middleware('auth.token')->group(function () {
-    Route::post('/logout-leader', [AuthController::class, 'logout']);
-});
+// Rute untuk login
+Route::post('/login', [AuthController::class, 'login']);
+
+// Rute untuk logout (opsional, jika menggunakan token)
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
