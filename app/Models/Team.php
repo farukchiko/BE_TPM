@@ -9,26 +9,18 @@ class Team extends Model
 {
     use HasFactory;
 
-    /**
-     * Tabel yang terkait dengan model ini.
-     */
-    protected $table = 'teams';
+    protected $fillable = ['team_name', 'is_binusian'];
 
-    /**
-     * Atribut yang dapat diisi secara massal.
-     */
-    protected $fillable = [
-        'name',
-        'institution',
-        'is_binusian',
-    ];
-
-    /**
-     * Relasi dengan model Member.
-     * Satu tim memiliki banyak anggota.
-     */
     public function members()
     {
-        return $this->hasMany(Member::class);
+        return $this->hasMany(Member::class, 'team_id');
+    }
+
+    public function files()
+    {
+        return $this->hasMany(File::class);
     }
 }
+
+
+

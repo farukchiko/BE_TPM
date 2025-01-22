@@ -3,40 +3,32 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens; // Pastikan ini diimpor
 
-class Member extends Model
+class Member extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens; // Tambahkan HasApiTokens di sini
 
-    /**
-     * Tabel yang terkait dengan model ini.
-     */
-    protected $table = 'members';
-
-    /**
-     * Atribut yang dapat diisi secara massal.
-     */
     protected $fillable = [
-        'team_id',
         'name',
         'email',
+        'team_id',
         'is_leader',
+        'phone',
+        'line_id',
+        'github_id',
+        'birth_place',
+        'birth_date',
         'password',
     ];
 
-    /**
-     * Sembunyikan atribut ini saat serialisasi (misalnya pada API response).
-     */
     protected $hidden = [
         'password',
     ];
 
-    /**
-     * Relasi dengan model Team (satu tim memiliki banyak anggota).
-     */
     public function team()
     {
-        return $this->belongsTo(Team::class);
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }
