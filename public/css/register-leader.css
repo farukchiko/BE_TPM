@@ -1,0 +1,395 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+html, body {
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none
+}
+
+body{
+    font-family: "Poppins", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #0054A5, #003E7A);
+    height: 100vh;
+}
+
+.card{
+    background: #FFFFFF;
+    width: 73%;
+    max-width: 1050px;
+    min-width: 1050px;
+    height: 55%;
+    max-height: 575px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    position: relative;
+}
+
+.logoBNCC{
+    width: 364px;
+    height: 162px;
+    margin: 206px 130px 206px 130px;
+}
+
+p{
+    font-size: 10px;
+    color: #666666;
+}
+
+label{
+    font-size: 14px;
+    color: #666666;
+}
+
+li{
+    color: #666666;
+}
+
+input:focus {
+border-color: #0054A5 !important;
+border: 1px solid #0054A5 !important;
+outline: none !important;
+}
+
+.input-box{
+    position: relative;
+    width: 332px;
+    height: 533px;
+    margin: 35px 101px 44px 0px;
+}
+
+input:focus {
+border-color: #0054A5 !important;
+border: 1px solid #0054A5 !important;
+outline: none !important;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active{
+    display: block;
+}
+
+#step-1 {
+    margin-top: 50px;
+}
+
+.name-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.name-wrapper > input {
+    width: 100%;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    margin-top: 8px;
+    margin-bottom: 11px;
+}
+
+.line-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.line-wrapper > input {
+    width: 100%;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    margin-top: 8px;
+    margin-bottom: 11px;
+}
+
+.email-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.email-wrapper > input {
+    width: 100%;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    margin-top: 8px;
+    margin-bottom: 11px;
+}
+
+.number-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.number-wrapper > input{
+    width: 100%;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    margin-top: 8px;
+    margin-bottom: 11px;
+}
+
+.git-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.git-wrapper > input {
+    width: 100%;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    margin-top: 8px;
+    margin-bottom: 11px;
+}
+
+#nextButton {
+    position: absolute;
+    left: 320px;
+    top: 450px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.error-message .email-example{
+    color: #0054A5;
+    text-decoration: underline;
+}
+
+.error-message{
+    display: none;
+    position: absolute;
+    top: 100%;
+    font-size: 10px;
+    color: #B20110;
+    margin: -12px 5px 5px 5px;
+    white-space: nowrap;
+}
+
+.input-error{
+    border-color: #B20110 !important;
+}
+
+.file-input-wrapper.input-error {
+    border-color: #B20110 !important;
+}
+
+#step-2{
+    margin-top: -7px;
+}
+
+.place-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.place-wrapper > input {
+    width: 320px;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+#birthPlace {
+    height: 39px;
+    appearance: none !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('/assets/icons/ic-chevron-down.svg');
+    padding-right: 30px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 23px;
+}
+
+#birthPlace:hover {
+    cursor: pointer;
+}
+
+#birthPlace::-webkit-inner-spin-button,
+#birthPlace::-webkit-outer-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.date-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.date-wrapper > .input-birth-date {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.date-wrapper .input-birth-date select {
+    color: #666666;
+    font-size: 14px;
+    width: 82px;
+    height: 43px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.date-wrapper .input-birth-date select:hover{
+    cursor: pointer;
+    color: black;
+}
+
+.date-wrapper > .requirement span{
+    color: #B20110;
+}
+
+.file-input{
+    display: none;
+}
+
+.cv-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 12px;
+}
+
+.cv-wrapper > .upload-cv-wrapper{
+    display: flex;
+}
+
+.cv-wrapper > .upload-cv-wrapper {
+    width: 320px;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+.cv-wrapper > .requirement span {
+    color: #B20110;
+}
+
+.flazz-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.flazz-wrapper label {
+    margin-bottom: -3px;
+}
+
+.flazz-wrapper > .upload-flazz-wrapper {
+    width: 320px;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+.flazz-wrapper > .requirement span {
+    color: #B20110;
+}
+
+.id-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.id-wrapper > .upload-id-wrapper{
+    margin-top: -9px;
+}
+
+.id-wrapper > .upload-id-wrapper {
+    width: 320px;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+.id-wrapper > .requirement span {
+    color: #B20110;
+}
+
+.upload-button {
+    position: absolute;
+    top: 60%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    margin-top: -5px;
+}
+
+#previousButton {
+    width: 58px;
+    height: 48px;
+    margin: 26px 0px 28px -20px;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#register-button {
+    width: 273px;
+    height: 44px;
+    padding: 10px;
+    background-color: #0054A5;
+    color: #FFFFFF;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer
+}

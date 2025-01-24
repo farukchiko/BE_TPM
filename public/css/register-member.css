@@ -1,0 +1,148 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+html, body {
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none
+}
+
+body{
+    font-family: "Poppins", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #0054A5, #003E7A);
+    height: 100vh;
+}
+
+.card{
+    background: #FFFFFF;
+    width: 73%;
+    max-width: 1050px;
+    min-width: 1050px;
+    height: 50%;
+    max-height: 462px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+}
+
+.logoBNCC{
+    width: 364px;
+    height: 162px;
+    margin: 150px 168px 150px 110px;
+}
+
+.input-box{
+    width: 320px;
+    height: 415px;
+    margin: 31px 88px 16px 0px;
+}
+
+.group-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.group-wrapper > label{
+    margin-bottom: 8px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(102, 102, 102, 1);
+}
+
+.group-wrapper > input {
+    width: 100%;
+    height: auto;
+    max-height: 40px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+}
+
+input::placeholder{
+    font-size: 16px;
+}
+
+
+.input-data{
+    font-size: 14px;
+    color: #666666;
+    font-weight: 400;
+}
+
+.member-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.member-wrapper > .member-input {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.member-wrapper >.member-input label {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    color: rgba(102, 102, 102, 1);
+}
+
+.member-wrapper >.member-input input {
+    width: 100%;
+    height: auto;
+    max-height: 40px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+}
+
+
+.register-button{
+    width: 100%;
+    height: 44px;
+    padding: 10px;
+    background-color: #0054A5;
+    color: #FFFFFF;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.input-error {
+    border-color: #B20110 !important;
+}
+
+.error-message {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 10px;
+    color: #B20110;
+    white-space: nowrap;
+}
+
+.requirement-invalid {
+    color: #B20110 !important;
+}
+
+input:focus {
+border-color: #0054A5 !important;
+border: 1px solid #0054A5 !important;
+outline: none !important;
+}
