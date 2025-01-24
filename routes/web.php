@@ -28,8 +28,8 @@ Route::get('/admin/dashboard', function () {
 });
 
 // user dashboard
-Route::get('/participant/dashboard', function () {
-    return view('participant.dashboard');
+Route::get('/user/dashboard', function () {
+    return view('user.dashboard');
 });
 
 Route::middleware([

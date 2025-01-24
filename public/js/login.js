@@ -62,7 +62,7 @@ btnLogin.addEventListener("click", function (event) {
     if (isValid) {
         console.log("Form is valid, proceed with login...");
         event.preventDefault();
-        window.location.href = "/";
+        window.location.href = "/user/dashboard";
     }
 });
 
