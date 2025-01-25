@@ -131,14 +131,26 @@ document.getElementById("previousButton").addEventListener("click", function () 
 });
 
 document.getElementById("register-button").addEventListener("click", function (e) {
-if (!validateStep2()) {
-    e.preventDefault();
-    goToStep(2);
+    if (!validateStep2()) {
+        e.preventDefault();
+        goToStep(2);
+    } else {
+        // Gabungkan nilai tanggal lahir menjadi format YYYY-MM-DD
+        const birthDate = `${document.getElementById("year").value}-${document.getElementById("month").value}-${document.getElementById("day").value}`;
 
-} else {
-    alert("Registrasi berhasil!");
-    window.location.href = "/register-member";
-}
+        const data = {
+            leaderName: document.getElementById("leaderName").value,
+            lineId: document.getElementById("lineId").value,
+            email: document.getElementById("email").value,
+            whatsappNumber: document.getElementById("whatsappNumber").value,
+            gitId: document.getElementById("gitId").value,
+            birthPlace: document.getElementById("birthPlace").value,
+            birthDate: birthDate,
+        };
+
+        localStorage.setItem("registerData", JSON.stringify(data));
+        window.location.href = "/register-member";
+    }
 });
 
 document.querySelectorAll('input[type="file"]').forEach((fileInput) => {

@@ -21,29 +21,29 @@
                     <div class="form-step active" id="step-1">
                         <div class="name-wrapper">
                             <label for="leaderName">Full Name</label>
-                            <input type="text" id="leaderName" name="leaderName" required>
+                            <input type="text" id="leaderName" name="leader[name]" required>
                         </div>
 
                         <div class="line-wrapper">
                             <label for="lineId">Line ID</label>
-                            <input type="text" id="lineId" name="lineId" required>
+                            <input type="text" id="lineId" name="leader[line_id]" required>
                         </div>
 
                         <div class="email-wrapper">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="leader[email]" required>
                             <p class="error-message">Masukkan email yang valid seperti <span class="email-example">user@gmail.com</span></p>
                         </div>
 
                         <div class="number-wrapper">
                             <label for="whatsappNumber">Whatsapp Number</label>
-                            <input type="tel" id="whatsappNumber" name="whatsappNumber" required>
+                            <input type="tel" id="whatsappNumber" name="leader[phone]" required>
                             <p class="error-message">Nomor Whatsapp harus berupa numerik yang valid</p>
                         </div>
 
                         <div class="git-wrapper">
                             <label for="gitId">Github/Gitlab ID</label>
-                            <input type="text" id="gitId" name="gitId" required>
+                            <input type="text" id="gitId" name="leader[github_id]" required>
                         </div>
 
                         <button type="button" id="nextButton">
@@ -56,7 +56,7 @@
 
                         <div class="place-wrapper">
                             <label for="birthPlace">Birth Place</label>
-                            <input list="cities" name="birthPlace" id="birthPlace" placeholder="City" required>
+                            <input list="cities" name="leader[birth_place]" id="birthPlace" placeholder="City" required>
                             <datalist id="cities">
                                 <option value="Bandung">
                                 <option value="Batam">
@@ -146,6 +146,7 @@
                                 </div>
 
                                 <img src="{{ asset('assets/icons/ic-calendar.svg')}}" alt="calendar">
+                                <input type="hidden" id="birthDate" name="leader[birth_date]">
                             </div>
 
                             <div class="requirement">
@@ -158,7 +159,7 @@
                             <label>Upload CV</label>
 
                             <div class="upload-cv-wrapper file-input-wrapper">
-                                <input type="file" class="file-input" id="uploadCv" name="uploadCv" accept=".pdf,.jpg,.jpeg,.png" required>
+                                <input type="file" class="file-input" id="uploadCv" name="files[cv]" accept=".pdf,.jpg,.jpeg,.png" required>
                                 <label class="upload-button" for="uploadCv">
                                 <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
                                 </label>
@@ -188,7 +189,7 @@
                             <label>Upload ID Card untuk Non-binusian</label>
 
                             <div class="upload-id-wrapper file-input-wrapper">
-                                <input type="file" class="file-input" id="uploadId" name="uploadId" accept=".pdf,.jpg,.jpeg,.png">
+                                <input type="file" class="file-input" id="uploadId" name="files[id_card]" accept=".pdf,.jpg,.jpeg,.png">
                                 <label class="upload-button" for="uploadId">
                                 <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
                                 </label>

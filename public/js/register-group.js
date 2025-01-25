@@ -107,7 +107,7 @@ form.addEventListener("submit", function (event) {
     clearError(confirmPasswordInput);
   }
 
-  const radioButtons = document.querySelectorAll('input[name="status"]');
+  const radioButtons = document.querySelectorAll('input[name="is_binusian"]');
   let isRadioSelected = false;
   radioButtons.forEach((radio) => {
     if (radio.checked) {

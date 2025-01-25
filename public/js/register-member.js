@@ -53,3 +53,21 @@ form.addEventListener("submit", function (event) {
     window.location.href = "/user-dashboard";
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const storedData = localStorage.getItem("registerData");
+    if (storedData) {
+        const data = JSON.parse(storedData);
+        document.getElementById("leaderName").value = data.leaderName || "";
+        document.getElementById("lineId").value = data.lineId || "";
+        document.getElementById("email").value = data.email || "";
+        document.getElementById("whatsappNumber").value = data.whatsappNumber || "";
+        document.getElementById("gitId").value = data.gitId || "";
+        document.getElementById("birthPlace").value = data.birthPlace || "";
+       
+        const [year, month, day] = (data.birthDate || "").split("-");
+        document.getElementById("year").value = year || "";
+        document.getElementById("month").value = month || "";
+        document.getElementById("day").value = day || "";
+    }
+});
