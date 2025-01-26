@@ -1,0 +1,300 @@
+:root {
+    /* tipografi */
+    --font-family: "Poppins";
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    /* fontsize */
+    --dp-10: 10px;
+    --dp-12: 12px;
+    --dp-14: 14px;
+    --dp-16: 16px;
+    --dp-18: 18px;
+    --dp-20: 20px;
+    --dp-22: 22px;
+    --dp-24: 24px;
+    --dp-26: 26px;
+    --dp-28: 28px;
+    --dp-30: 30px;
+    --dp-32: 32px;
+
+    /* color */
+    --color-background: #fbfbfb;
+    --color-primary: #0054a5;
+    --color-error: #b20110;
+    --color-pink: #fdedee;
+    --color-logout: #fbeeea;
+    --color-white: #ffffff;
+    --color-contact: #e5effa;
+    --border-contact: #abcdf1;
+    --line-timeline: #cdd8dd;
+    --text-primary: #000000;
+    --text-secondary: #666666;
+    --text-placeholder: #1e1e1e;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+body {
+    background: radial-gradient(circle, #0054a5 0%, #003e7a 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: var(--color-white);
+    padding: 64px;
+    width: 1051px;
+    border-radius: 8px;
+    box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.16);
+}
+
+.img-logo-bncc {
+    width: 182px;
+}
+
+/* MODAL DELETE*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.top-content {
+    background-color: var(--color-white);
+    padding: 16px;
+    width: 452px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.ic-close {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-close {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.warn-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+
+.warn-wrap {
+    background-color: var(--color-logout);
+    display: flex;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.text-confirm {
+    font-weight: var(--weight-medium);
+    font-size: var(--dp-16);
+    color: var(--text-secondary);
+}
+
+.text-confirm span {
+    color: var(--color-error);
+}
+
+.bottom-content {
+    background-color: var(--color-white);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.btn-confirm {
+    background-color: #d44f4d;
+    color: var(--color-white);
+    font-weight: var(--weight-medium);
+    font-size: var(--dp-16);
+    font-family: var(--font-family);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-confirm:hover {
+    opacity: 0.9;
+}
+/* END MODAL DELETE */
+
+/* MODAL VIEW */
+.modal-content-view {
+    background-color: var(--color-white);
+    padding: 16px;
+    width: 452px;
+    border-radius: 6px;
+}
+
+.head-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub-text {
+    font-weight: var(--weight-medium);
+    font-size: var(--dp-18);
+    color: var(--text-secondary);
+}
+
+.mid-content {
+    margin: 15px 0;
+}
+
+.main-text {
+    font-weight: var(--weight-medium);
+    font-size: var(--dp-16);
+}
+
+.memb-text {
+    font-weight: var(--weight-medium);
+    font-size: var(--dp-16);
+}
+/* END MODAL VIEW */
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: solid 1px #000000;
+    padding: 12px 14px;
+    border-radius: 15px;
+}
+
+.left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    font-size: var(--dp-16);
+    color: var(--text-placeholder);
+}
+/* End Search Bar */
+
+/* Content List */
+.title-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 26px;
+}
+
+.left-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 57%;
+}
+
+.title {
+    font-size: var(--dp-20);
+    color: #000000;
+    font-weight: var(--weight-medium);
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.list-team {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: solid 1px #000000;
+    padding: 8px 12px;
+}
+
+.team-name,
+.regist-time {
+    font-size: var(--dp-16);
+    color: #000000;
+    font-weight: var(--weight-medium);
+}
+
+.btn-view,
+.btn-edit {
+    background-color: var(--color-primary);
+    border-radius: 4px;
+    padding: 5px 10px;
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-delete {
+    background-color: var(--color-error);
+    border-radius: 4px;
+    padding: 5px 10px;
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-view:hover,
+.btn-edit:hover {
+    opacity: 0.8;
+}
+
+.btn-delete:hover {
+    opacity: 0.8;
+}
+/* End Content List */
