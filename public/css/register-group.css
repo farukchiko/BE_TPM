@@ -1,0 +1,254 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+html, body {
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none
+}
+
+body{
+    font-family: "Poppins", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #0054A5, #003E7A);
+    height: 100vh;
+}
+
+.card{
+    background: #FFFFFF;
+    width: 73%;
+    max-width: 1050px;
+    min-width: 1050px;
+    height: 50%;
+    max-height: 462px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+}
+
+.logoBNCC{
+    width: 364px;
+    height: 162px;
+    margin: 150px 168px 150px 110px;
+}
+
+p{
+    color: #666666;
+}
+
+label{
+    font-size: 14px;
+    color: #666666;
+}
+
+li{
+    color: #666666;
+}
+.input-box{
+    width: 320px;
+    height: 415px;
+    margin: 31px 88px 16px 0px;
+}
+.group-wrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.group-wrapper > label{
+    margin-bottom: 8px;
+}
+
+.group-wrapper > input {
+    width: 100%;
+    height: auto;
+    max-height: 40px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+}
+
+input::placeholder{
+    font-size: 16px;
+}
+
+.password-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+    position: relative;
+}
+
+.password-wrapper > label{
+    margin-bottom: 8px;
+}
+
+.password-wrapper > .input-password-wrapper{
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper > .input-password-wrapper > input {
+    width: 100%;
+    height: auto;
+    max-height: 40px;
+    padding: 8px 12px 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+}
+
+.password-wrapper > .input-password-wrapper > .toggle-password{
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.password-wrapper > .input-password-wrapper > .toggleEye{
+    width: 20px;
+    height: 14px;
+}
+
+.requirement ul{
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+}
+
+.requirement li {
+    position: relative;
+    padding-left: 8px;
+}
+
+.requirement .bullet{
+    color: #B20110;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.confirm-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    position: relative;
+}
+
+.confirm-wrapper > label{
+    margin-bottom: 4px;
+}
+
+.confirm-wrapper > .input-confirm-wrapper{
+    position: relative;
+    width: 100%;
+}
+
+.confirm-wrapper > .input-confirm-wrapper > input{
+    width: 100%;
+    height: auto;
+    max-height: 40px;
+    padding: 8px 12px 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+}
+
+.confirm-wrapper > .input-confirm-wrapper > .toggle-password{
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.confirm-wrapper > ,.input-confirm-wrapper > .toggleEye{
+    width: 20px;
+    height: 14px;
+}
+
+.statusBinusian {
+    display: flex;
+    align-items: center;
+    margin-left: 7px;
+}
+
+.statusBinusian input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.statusBinusian  label {
+    position: relative;
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 9px;
+    margin-right: 9px;
+}
+
+.statusBinusian label:before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 13px;
+    height: 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background-color: white;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.statusBinusian input[type="radio"]:checked + label:before {
+    background-color: #0054A5;
+    border-color: #0054A5;
+}
+
+.register-button{
+    width: 100%;
+    height: 44px;
+    padding: 10px;
+    background-color: #0054A5;
+    color: #FFFFFF;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.input-error {
+    border-color: #B20110 !important;
+}
+
+.error-message {
+    position: absolute;
+    top: 100%;
+    font-size: 10px;
+    color: #B20110;
+    margin: 0px;
+    white-space: nowrap;
+}
+
+.requirement-invalid {
+    color: #B20110 !important;
+}
+
+.error-radio-label{
+    color: #B20110;
+}
+
+input:focus {
+border-color: #0054A5 !important;
+border: 1px solid #0054A5 !important;
+outline: none !important;
+}
