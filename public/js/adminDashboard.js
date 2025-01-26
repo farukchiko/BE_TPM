@@ -1,9 +1,15 @@
-// delete handler
 const modalDelete = document.getElementById("modal-delete");
+const modalView = document.getElementById("modal-view");
+
 const btnDelete = document.getElementById("btn-delete");
-const btnClose = document.getElementById("btn-close");
 const btnConfirmDelete = document.getElementById("btn-confirm-delete");
 
+const btnView = document.getElementById("btn-view");
+
+const btnClose = document.getElementById("btn-close");
+const btnCloseView = document.getElementById("btn-close-view");
+
+// delete handler
 btnDelete.addEventListener("click", () => {
     modalDelete.classList.remove("hidden");
 });
@@ -15,4 +21,13 @@ btnClose.addEventListener("click", () => {
 btnConfirmDelete.addEventListener("click", () => {
     // dummy action
     alert("Success delete!");
+});
+
+// view handler
+btnView.addEventListener("click", () => {
+    modalView.classList.remove("hidden");
+});
+
+btnCloseView.addEventListener("click", () => {
+    modalView.classList.add("hidden");
 });

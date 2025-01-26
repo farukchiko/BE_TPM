@@ -38,6 +38,33 @@
     </div>
     <!-- END MODAL DELETE -->
 
+    <!-- MODAL VIEW-->
+    <div id="modal-view" class="modal hidden">
+      <div class="modal-content-view">
+       <div class="head-content">
+        <p class="sub-text">View Team Details</p>
+          <button id="btn-close-view" class="btn-close">
+            <img src="../assets/icons/ic-close.svg" alt="Icon Close" id="btn-close" />
+          </button>
+       </div>
+
+       <div class="mid-content">
+        <h4 class="main-text">Team Name: Team Rocket</h4>
+        <div class="member">
+          <h4 class="main-text">Members:</h4>
+          <p class="memb-text">Sheren Aura</p>
+          <p class="memb-text">Gojo Satoru</p>
+          <p class="memb-text">Alana Joy</p>
+        </div>
+       </div>
+
+       <div class="regist-on">
+       <p class="sub-text">Register on December 12, 2024</p>
+       </div>
+      </div>
+    </div>
+    <!-- END MODAL VIEW -->
+
     <div class="main">
       <img src="../assets/images/img-bncc-logo.png" alt="Logo BNCC" class="img-logo-bncc" />
       <div class="container">

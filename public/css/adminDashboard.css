@@ -161,6 +161,41 @@ body {
 }
 /* END MODAL DELETE */
 
+/* MODAL VIEW */
+.modal-content-view {
+    background-color: var(--color-white);
+    padding: 16px;
+    width: 452px;
+    border-radius: 6px;
+}
+
+.head-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub-text {
+    font-weight: var(--weight-medium);
+    font-size: var(--dp-18);
+    color: var(--text-secondary);
+}
+
+.mid-content {
+    margin: 15px 0;
+}
+
+.main-text {
+    font-weight: var(--weight-medium);
+    font-size: var(--dp-16);
+}
+
+.memb-text {
+    font-weight: var(--weight-medium);
+    font-size: var(--dp-16);
+}
+/* END MODAL VIEW */
+
 /* Search Bar */
 .search-bar {
     display: flex;
