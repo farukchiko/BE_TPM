@@ -109,9 +109,11 @@ form.addEventListener("submit", function (event) {
 
   const radioButtons = document.querySelectorAll('input[name="is_binusian"]');
   let isRadioSelected = false;
+  let isBinusianValue;
   radioButtons.forEach((radio) => {
     if (radio.checked) {
       isRadioSelected = true;
+      isBinusianValue = radio.value;
     }
   });
 
@@ -123,6 +125,12 @@ form.addEventListener("submit", function (event) {
   }
 
   if (isValid) {
+    const groupData = {
+        team_name: groupNameInput.value,
+        password: passwordInput.value,
+        is_binusian : isBinusianValue
+    };
+    localStorage.setItem("groupData", JSON.stringify(groupData));
     window.location.href = "/register-leader";
   }
 });

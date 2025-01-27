@@ -47,7 +47,7 @@
                     <div class="confirm-wrapper">
                         <label for="confirmPassword">Confirm Password</label>
                         <div class="input-confirm-wrapper">
-                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="password">
+                            <input type="password" id="confirmPassword" name="password_confirmation" placeholder="password">
                             <span class="toggle-password" id="togglePassword2">
                                 <img class="toggleEye" src="{{ asset('assets/icons/ic-eyes-open.svg')}}" alt="Toggle Button">
                             </span>

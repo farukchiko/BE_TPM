@@ -166,7 +166,7 @@ outline: none !important;
 #nextButton {
     position: absolute;
     left: 320px;
-    top: 450px;
+    top: 440px;
     width: 48px;
     height: 48px;
     border: none;
@@ -392,4 +392,8 @@ outline: none !important;
     border: none;
     border-radius: 6px;
     cursor: pointer
+}
+
+#teamNameDisplay , #passwordDisplay , #isBinusianDisplay {
+    display: none;
 }

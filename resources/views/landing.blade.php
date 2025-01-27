@@ -359,7 +359,7 @@
             <img src="{{ asset('assets/images/dummy-sponsor.svg')}}" alt="Dummy sponsor">
             <img src="{{ asset('assets/images/dummy-sponsor.svg')}}" alt="Dummy sponsor">
             <img src="{{ asset('assets/images/dummy-sponsor.svg')}}" alt="Dummy sponsor">
-            <img src="{{ asset('assets/images/dummy-sponsor.svg')}}" alt="Dummy sponsor">>
+            <img src="{{ asset('assets/images/dummy-sponsor.svg')}}" alt="Dummy sponsor">
             <img src="{{ asset('assets/images/dummy-sponsor.svg')}}" alt="Dummy sponsor">
             <img src="{{ asset('assets/images/dummy-sponsor.svg')}}" alt="Dummy sponsor">
         </div>

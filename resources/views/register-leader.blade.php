@@ -155,48 +155,50 @@
 
                         </div>
 
-                        <div class="cv-wrapper">
-                            <label>Upload CV</label>
+                        <div class="upload-wrapper">
+                            <div class="cv-wrapper">
+                                <label>Upload CV</label>
 
-                            <div class="upload-cv-wrapper file-input-wrapper">
-                                <input type="file" class="file-input" id="uploadCv" name="files[cv]" accept=".pdf,.jpg,.jpeg,.png" required>
-                                <label class="upload-button" for="uploadCv">
-                                <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
-                                </label>
+                                <div class="upload-cv-wrapper file-input-wrapper">
+                                    <input type="file" class="file-input" id="uploadCv" name="files[cv]" accept=".pdf,.jpg,.jpeg,.png" required>
+                                    <label class="upload-button" for="uploadCv">
+                                    <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
+                                    </label>
+                                </div>
+
+                                <div class="requirement">
+                                    <p><span>*</span>Format file pdf,jpg,jpeg, dan png</p>
+                                </div>
                             </div>
 
-                            <div class="requirement">
-                                <p><span>*</span>Format file pdf,jpg,jpeg, dan png</p>
-                            </div>
-                        </div>
+                            <div class="flazz-wrapper">
+                                <label>Upload Flazz Card untuk Binusian</label>
 
-                        <div class="flazz-wrapper">
-                            <label>Upload Flazz Card untuk Binusian</label>
+                                <div class="upload-flazz-wrapper file-input-wrapper">
+                                    <input type="file" class="file-input" id="uploadFlazz" name="uploadFlazz" accept=".pdf,.jpg,.jpeg,.png">
+                                    <label class="upload-button" for="uploadFlazz">
+                                    <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
+                                    </label>
+                                </div>
 
-                            <div class="upload-flazz-wrapper file-input-wrapper">
-                                <input type="file" class="file-input" id="uploadFlazz" name="uploadFlazz" accept=".pdf,.jpg,.jpeg,.png">
-                                <label class="upload-button" for="uploadFlazz">
-                                <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
-                                </label>
-                            </div>
-
-                            <div class="requirement">
-                                <p><span>*</span>Format file pdf,jpg,jpeg, dan png</p>
-                            </div>
-                        </div>
-
-                        <div class="id-wrapper">
-                            <label>Upload ID Card untuk Non-binusian</label>
-
-                            <div class="upload-id-wrapper file-input-wrapper">
-                                <input type="file" class="file-input" id="uploadId" name="files[id_card]" accept=".pdf,.jpg,.jpeg,.png">
-                                <label class="upload-button" for="uploadId">
-                                <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
-                                </label>
+                                <div class="requirement">
+                                    <p><span>*</span>Format file pdf,jpg,jpeg, dan png</p>
+                                </div>
                             </div>
 
-                            <div class="requirement">
-                                <p><span>*</span>Format file pdf,jpg,jpeg, dan png</p>
+                            <div class="id-wrapper">
+                                <label>Upload ID Card untuk Non-binusian</label>
+
+                                <div class="upload-id-wrapper file-input-wrapper">
+                                    <input type="file" class="file-input" id="uploadId" name="files[id_card]" accept=".pdf,.jpg,.jpeg,.png">
+                                    <label class="upload-button" for="uploadId">
+                                    <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
+                                    </label>
+                                </div>
+
+                                <div class="requirement">
+                                    <p><span>*</span>Format file pdf,jpg,jpeg, dan png</p>
+                                </div>
                             </div>
                         </div>
 
@@ -213,5 +215,10 @@
             </div>
         </div>
     </div>
+
+    <div id="teamNameDisplay"></div>
+    <div id="passwordDisplay"></div>
+    <div id="isBinusianDisplay"></div>
+
 </body>
 </html>

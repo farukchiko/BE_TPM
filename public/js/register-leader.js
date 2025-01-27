@@ -1,3 +1,37 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const storedGroupData = localStorage.getItem("groupData");
+
+    const isBinusian = document.getElementById("isBinusianDisplay").innerText.trim() === "Yes";
+
+    const flazzCardWrapper = document.querySelector(".flazz-wrapper");
+    const idCardWrapper = document.querySelector(".id-wrapper");
+
+    if (isBinusian) {
+        flazzCardWrapper.style.display = "block";
+        idCardWrapper.style.display = "none";
+    } else {
+        flazzCardWrapper.style.display = "none";
+        idCardWrapper.style.display = "block";
+    }
+
+    if (storedGroupData) {
+        const groupData = JSON.parse(storedGroupData);
+        console.log("Data yang diambil:", groupData);
+
+        const { team_name, password, is_binusian } = groupData;
+
+        const teamNameDisplay = document.getElementById("teamNameDisplay");
+        const passwordDisplay = document.getElementById("passwordDisplay");
+        const isBinusianDisplay = document.getElementById("isBinusianDisplay");
+
+        if (teamNameDisplay) teamNameDisplay.innerText = team_name || "Nama tim tidak ditemukan";
+        if (passwordDisplay) passwordDisplay.innerText = password || "Password tidak ditemukan";
+        if (isBinusianDisplay) isBinusianDisplay.innerText = is_binusian === "1" ? "Yes" : "No";
+    } else {
+        console.error("Data tidak ditemukan di localStorage.");
+    }
+});
+
 function validateStep1() {
     const inputs = [
         { id: "leaderName", message: "Nama tidak boleh kosong" },
@@ -27,27 +61,28 @@ function validateStep1() {
         if (input && !input.value.trim() && !validate) {
             isValid = false;
             input.classList.add("input-error");
-
-            const error = parent.querySelector(".error-message") || document.createElement("p");
-            error.className = "error-message";
-            error.innerText = message;
-            error.style.display = "block";
-            parent.appendChild(error);
+            showErrorMessage(parent, message);
         } else if (validate && !validate(input.value.trim())) {
             isValid = false;
             input.classList.add("input-error");
-
-            const error = parent.querySelector(".error-message") || document.createElement("p");
-            error.className = "error-message";
-            error.innerText = message;
-            error.style.display = "block";
-            parent.appendChild(error);
+            showErrorMessage(parent, message);
         } else {
-            if (input) input.classList.remove("input-error");
+            if (input) {
+                input.classList.remove("input-error");
+                if (errorMessage) errorMessage.style.display = "none";
+            }
         }
     });
 
     return isValid;
+}
+
+function showErrorMessage(parent, message) {
+    const error = parent.querySelector(".error-message") || document.createElement("p");
+    error.className = "error-message";
+    error.innerText = message;
+    error.style.display = "block";
+    parent.appendChild(error);
 }
 
 function validateStep2() {
@@ -65,18 +100,16 @@ function validateStep2() {
     const day = document.getElementById("day");
     const year = document.getElementById("year");
 
-    [month, day, year].forEach((input) => {
-        if (!input.value.trim()) {
-            isValid = false;
-            input.classList.add("input-error");
-        } else {
-            input.classList.remove("input-error");
-        }
-    });
-
-    const cvInput = document.getElementById("uploadCv");
-    const flazzInput = document.getElementById("uploadFlazz");
-    const idInput = document.getElementById("uploadId");
+    if (!month.value || !day.value || !year.value) {
+        isValid = false;
+        if (!month.value) month.classList.add("input-error");
+        if (!day.value) day.classList.add("input-error");
+        if (!year.value) year.classList.add("input-error");
+    } else {
+        month.classList.remove("input-error");
+        day.classList.remove("input-error");
+        year.classList.remove("input-error");
+    }
 
     const fileInputs = [
         { id: "uploadCv", message: "CV belum diunggah" },
@@ -84,25 +117,21 @@ function validateStep2() {
         { id: "uploadId", message: "ID Card belum diunggah" },
     ];
 
-    const cvWrapper = cvInput.closest(".upload-cv-wrapper");
-    if (cvInput.files.length === 0) {
-        isValid = false;
-        cvWrapper.classList.add("input-error");
-    } else {
-        cvWrapper.classList.remove("input-error");
-    }
-
-    const flazzWrapper = flazzInput.closest(".upload-flazz-wrapper");
-    const idWrapper = idInput.closest(".upload-id-wrapper");
-
-    if (flazzInput.files.length === 0 && idInput.files.length === 0) {
-        isValid = false;
-        flazzWrapper.classList.add("input-error");
-        idWrapper.classList.add("input-error");
-    } else {
-        flazzWrapper.classList.remove("input-error");
-        idWrapper.classList.remove("input-error");
-    }
+    fileInputs.forEach(({ id, message }) => {
+        const input = document.getElementById(id);
+        const wrapper = input.closest(".upload-wrapper");
+        if (input.files.length === 0) {
+            isValid = false;
+            if (wrapper) {
+                wrapper.classList.add("input-error");
+                showErrorMessage(wrapper, message);
+            }
+        } else {
+            if (wrapper) {
+                wrapper.classList.remove("input-error");
+            }
+        }
+    });
 
     return isValid;
 }
@@ -135,23 +164,39 @@ document.getElementById("register-button").addEventListener("click", function (e
         e.preventDefault();
         goToStep(2);
     } else {
-        // Gabungkan nilai tanggal lahir menjadi format YYYY-MM-DD
         const birthDate = `${document.getElementById("year").value}-${document.getElementById("month").value}-${document.getElementById("day").value}`;
 
+        const storedData = localStorage.getItem("registerData");
+        const registerData = storedData ? JSON.parse(storedData) : {};
+
+        const storedGroupData = localStorage.getItem("groupData");
+        const groupData = storedGroupData ? JSON.parse(storedGroupData) : {};
+
         const data = {
-            leaderName: document.getElementById("leaderName").value,
-            lineId: document.getElementById("lineId").value,
-            email: document.getElementById("email").value,
-            whatsappNumber: document.getElementById("whatsappNumber").value,
-            gitId: document.getElementById("gitId").value,
-            birthPlace: document.getElementById("birthPlace").value,
-            birthDate: birthDate,
+            team_name: groupData.team_name || document.getElementById("groupName").value,
+            is_binusian: document.getElementById("isBinusianDisplay").innerText.trim() === "Yes",
+            password: groupData.password || document.getElementById("groupPassword").value,
+            leader: {
+                name: document.getElementById("leaderName").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("whatsappNumber").value,
+                line_id: document.getElementById("lineId").value,
+                github_id: document.getElementById("gitId").value,
+                birth_place: document.getElementById("birthPlace").value,
+                birth_date: birthDate,
+            },
+            files: {
+                cv: document.getElementById("uploadCv").files[0],
+                id_card: document.getElementById("uploadId").files[0],
+            },
+            group_data: groupData
         };
 
-        localStorage.setItem("registerData", JSON.stringify(data));
+        localStorage.setItem("leaderData", JSON.stringify(data));
         window.location.href = "/register-member";
     }
 });
+
 
 document.querySelectorAll('input[type="file"]').forEach((fileInput) => {
     fileInput.addEventListener("change", function () {
