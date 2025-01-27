@@ -28,7 +28,7 @@ class Admin_GetAllTeams extends Controller
             return [
                 'id' => $team->id,
                 'team_name' => $team->team_name,
-                'leader_name' => $leader ? $leader->name : 'N/A', // Handle case where there may be no leader
+                'leader_name' => $leader,
                 'members_count' => $countMember,
                 'members' => $membersData
             ];
