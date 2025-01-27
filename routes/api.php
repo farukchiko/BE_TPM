@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\User_DashboardController;
 use App\Http\Controllers\Api\Admin_GetAllTeams;
+use App\Http\Controllers\Api\Admin_GetTeamDetails;
 
 use Illuminate\Http\Request;
 
@@ -29,6 +30,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::middleware('admin')->group(function () {
         //Get All Teams
         Route:: get('/admin-dashboard/get-all-teams', [Admin_GetAllTeams::class, 'show'])->name('admin.dashboard');
+        
+        // Get Team Details
+        Route:: get('/admin-dashboard/get-team-details/{teamId}', [Admin_GetTeamDetails::class, 'show'])->name('admin.dashboard.detail');
         
         //gtw ini buat apa wkwkwk @faruk
         Route::get('/admin/dashboard', function () {
