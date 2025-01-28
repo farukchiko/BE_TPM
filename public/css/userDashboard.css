@@ -57,18 +57,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Pastikan modal berada di atas elemen lain */
+    z-index: 9999;
     opacity: 1;
     visibility: visible;
-    pointer-events: auto; /* Pastikan modal bisa diinteraksi saat terlihat */
+    pointer-events: auto;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Modal tersembunyi */
 .modal.hidden {
     opacity: 0;
     visibility: hidden;
-    pointer-events: none; /* Tidak ada interaksi saat tersembunyi */
+    pointer-events: none;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 

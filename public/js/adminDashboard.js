@@ -31,3 +31,17 @@ btnView.addEventListener("click", () => {
 btnCloseView.addEventListener("click", () => {
     modalView.classList.add("hidden");
 });
+
+// logout
+const isLoggedIn = localStorage.getItem("isLoggedIn");
+if (isLoggedIn !== "true") {
+    window.location.href = "/login/admin";
+}
+
+const btnLogout = document.getElementById("btn-logout");
+
+btnLogout.addEventListener("click", () => {
+    localStorage.removeItem("adminToken");
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "/login/admin";
+});

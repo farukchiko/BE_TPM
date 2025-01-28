@@ -3,6 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RegisterController;
 
+// Halaman login
+Route::get('/login/admin', [AdminController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/login/admin', [AdminController::class, 'login'])->name('admin.login.post');
+
+// Halaman dashboard (hanya bisa diakses jika sudah login)
+Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+});
+
 // landing
 Route::get('/', function () {
     return view('landing');

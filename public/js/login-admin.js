@@ -13,24 +13,28 @@ iconEyes.addEventListener("click", () => {
         : "/assets/icons/ic-eyes-close.svg";
 });
 
-btnLoginAsAdmin.addEventListener("click", function (event) {
+if (localStorage.getItem("isLoggedIn") === "true") {
+    window.location.href = "/admin/dashboard";
+}
+
+btnLoginAsAdmin.addEventListener("click", async function (event) {
     event.preventDefault();
 
-    const username = document.getElementById("input-username").value;
+    const email = document.getElementById("input-email").value;
     const password = document.getElementById("input-pass").value;
 
     let isValid = true;
 
-    document.getElementById("username-error").style.display = "none";
+    document.getElementById("email-error").style.display = "none";
     document.getElementById("pass-error").style.display = "none";
-    document.getElementById("input-username").classList.remove("error");
+    document.getElementById("input-email").classList.remove("error");
     document.getElementById("input-pass").classList.remove("error");
 
-    if (!username) {
-        document.getElementById("username-error").textContent =
-            "Username is required";
-        document.getElementById("username-error").style.display = "block";
-        document.getElementById("input-username").classList.add("error");
+    if (!email) {
+        document.getElementById("email-error").textContent =
+            "Email is required";
+        document.getElementById("email-error").style.display = "block";
+        document.getElementById("input-email").classList.add("error");
         isValid = false;
     }
 
@@ -60,9 +64,62 @@ btnLoginAsAdmin.addEventListener("click", function (event) {
     }
 
     if (isValid) {
-        console.log("Form is valid, proceed with login...");
-        event.preventDefault();
-        window.location.href = "/admin/dashboard";
+        try {
+            const response = await fetch(
+                "http://127.0.0.1:8000/api/login-admin",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                    }),
+                }
+            );
+
+            if (!response.ok) {
+                console.log(`Error status: ${response.status}`);
+                const data = await response.json();
+                console.log("Response data:", data);
+
+                if (data.message === "Invalid credentials") {
+                    document.getElementById("email-error").textContent =
+                        "Invalid email or password.";
+                    document.getElementById("email-error").style.display =
+                        "block";
+                    document.getElementById("pass-error").textContent =
+                        "Invalid email or password.";
+                    document.getElementById("pass-error").style.display =
+                        "block";
+                    document
+                        .getElementById("input-email")
+                        .classList.add("error");
+                    document
+                        .getElementById("input-eyes")
+                        .classList.add("error")
+                        .parentElement.classList.add("error");
+
+                    isValid = false;
+                } else {
+                    alert(data.message || "Login failed.");
+                }
+            } else {
+                const data = await response.json();
+                if (data.token) {
+                    alert("Login successful!");
+                    localStorage.setItem("adminToken", data.token);
+                    localStorage.setItem("isLoggedIn", "true");
+                    window.location.href = "/admin/dashboard";
+                } else {
+                    alert(data.message || "Login failed.");
+                }
+            }
+        } catch (error) {
+            console.error("Error:", error.message);
+            // alert("An error occurred during login. Please try again.");
+        }
     }
 });
 

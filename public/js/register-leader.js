@@ -5,12 +5,12 @@ function validateStep1() {
         {
             id: "email",
             message: "Masukkan email yang valid seperti user@gmail.com",
-            validate: (value) => value.includes("@gmail.com")
+            validate: (value) => value.includes("@gmail.com"),
         },
         {
             id: "whatsappNumber",
             message: "Nomor Whatsapp harus berupa numerik yang valid",
-            validate: (value) => /^\d+$/.test(value)
+            validate: (value) => /^\d+$/.test(value),
         },
         { id: "gitId", message: "Github/Gitlab ID tidak boleh kosong" },
     ];
@@ -21,14 +21,18 @@ function validateStep1() {
         const input = document.getElementById(id);
         const parent = input ? input.parentElement : null;
 
-        const errorMessage = parent ? parent.querySelector(".error-message") : null;
+        const errorMessage = parent
+            ? parent.querySelector(".error-message")
+            : null;
         if (errorMessage) errorMessage.style.display = "none";
 
         if (input && !input.value.trim() && !validate) {
             isValid = false;
             input.classList.add("input-error");
 
-            const error = parent.querySelector(".error-message") || document.createElement("p");
+            const error =
+                parent.querySelector(".error-message") ||
+                document.createElement("p");
             error.className = "error-message";
             error.innerText = message;
             error.style.display = "block";
@@ -37,7 +41,9 @@ function validateStep1() {
             isValid = false;
             input.classList.add("input-error");
 
-            const error = parent.querySelector(".error-message") || document.createElement("p");
+            const error =
+                parent.querySelector(".error-message") ||
+                document.createElement("p");
             error.className = "error-message";
             error.innerText = message;
             error.style.display = "block";
@@ -126,20 +132,38 @@ document.getElementById("nextButton").addEventListener("click", function () {
     }
 });
 
-document.getElementById("previousButton").addEventListener("click", function () {
-    goToStep(1);
-});
+document
+    .getElementById("previousButton")
+    .addEventListener("click", function () {
+        goToStep(1);
+    });
 
-document.getElementById("register-button").addEventListener("click", function (e) {
-if (!validateStep2()) {
-    e.preventDefault();
-    goToStep(2);
+document
+    .getElementById("register-button")
+    .addEventListener("click", function (e) {
+        if (!validateStep2()) {
+            e.preventDefault();
+            goToStep(2);
+        } else {
+            // Gabungkan nilai tanggal lahir menjadi format YYYY-MM-DD
+            const birthDate = `${document.getElementById("year").value}-${
+                document.getElementById("month").value
+            }-${document.getElementById("day").value}`;
 
-} else {
-    alert("Registrasi berhasil!");
-    window.location.href = "/register-member";
-}
-});
+            const data = {
+                leaderName: document.getElementById("leaderName").value,
+                lineId: document.getElementById("lineId").value,
+                email: document.getElementById("email").value,
+                whatsappNumber: document.getElementById("whatsappNumber").value,
+                gitId: document.getElementById("gitId").value,
+                birthPlace: document.getElementById("birthPlace").value,
+                birthDate: birthDate,
+            };
+
+            localStorage.setItem("registerData", JSON.stringify(data));
+            window.location.href = "/register-member";
+        }
+    });
 
 document.querySelectorAll('input[type="file"]').forEach((fileInput) => {
     fileInput.addEventListener("change", function () {

@@ -19,7 +19,7 @@
                 <form class="input-form">
                     <div class="group-wrapper">
                         <label for="groupName">Group Name</label>
-                        <input type="text" id="groupName" name="groupName" placeholder="group name">
+                        <input type="text" id="groupName" name="team_name" placeholder="group name">
                         <div class="requirement">
 
                         </div>
@@ -28,7 +28,7 @@
                     <div class="password-wrapper">
                         <label for="groupPassword">Password</label>
                         <div class="input-password-wrapper">
-                            <input type="password" id="groupPassword" name="groupPassword" placeholder="password">
+                            <input type="password" id="groupPassword" name="password" placeholder="password">
                             <span class="toggle-password" id="togglePassword1">
                                 <img class="toggleEye" src="{{ asset('assets/icons/ic-eyes-open.svg')}}" alt="Toggle Button">
                             </span>
@@ -56,10 +56,10 @@
 
                     <div class="statusBinusian">
                         <div class="radio-wrapper">
-                        <input type="radio" id="binusian" name="status" value="binusian">
+                        <input type="radio" id="binusian" name="is_binusian" value="1">
                         <label for="binusian">Binusian</label>
 
-                        <input type="radio" id="non-binusian" name="status" value="non-binusian">
+                        <input type="radio" id="non-binusian" name="is_binusian" value="0">
                         <label for="non-binusian">Non-Binusian</label>
                         </div>
                     </div>

@@ -23,13 +23,13 @@
 
       <div class="mid-content">
         <div class="input-wrapper">
-          <p class="input-name">Username</p>
-          <input type="text" placeholder="username" class="form-input" id="input-username" />
-          <p class="error-message" id="username-error"></p>
+          <p class="input-name">Email</p>
+          <input type="text" placeholder="email" class="form-input" id="input-email" />
+          <p class="error-message" id="email-error"></p>
         </div>
         <div class="input-wrapper">
           <p class="input-name">Password</p>
-          <div class="input-eyes">
+          <div class="input-eyes" id="input-eyes">
             <input type="password" placeholder="password" class="form-input-pass" id="input-pass" />
             <div class="eyes-container">
               <img src="{{ asset('assets/icons/ic-eyes-open.svg') }}" alt="Icon Eyes" id="ic-eyes" />
