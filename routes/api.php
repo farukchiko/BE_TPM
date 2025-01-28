@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Admin_GetTeamDetails;
 use App\Http\Controllers\Api\Admin_EditTeam;
 use App\Http\Controllers\Api\AdminDeleteTeam;
 use App\Http\Controllers\Api\ContactController;
+
 use Illuminate\Http\Request;
 
 // Public routes
@@ -40,7 +41,7 @@ Route::middleware('auth:sanctum')->group(function () {
         
         //rute ini hanya akan mengembalikan pesan selamat datang (welcome message) saat mengetes token admin
         Route::get('/admin/dashboard', function () {
-            return response()->json(['message' => 'Welcome to Admin Dashboard']);
+            return response()->json(['message' => 'Welcome Admin']);
         });
         // Route untuk mengupdate tim
         Route::put('/admin/edit-team/{teamId}', [Admin_EditTeam::class, 'update'])->name('admin.edit-team');

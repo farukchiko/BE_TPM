@@ -52,4 +52,5 @@ class Admin_GetTeamDetails extends Controller
         }
         return view('admin.dashboard.detail', $data);
     }
+
 }
