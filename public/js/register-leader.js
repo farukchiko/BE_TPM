@@ -1,18 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const storedGroupData = localStorage.getItem("groupData");
 
-    const isBinusian = document.getElementById("isBinusianDisplay").innerText.trim() === "Yes";
-
     const flazzCardWrapper = document.querySelector(".flazz-wrapper");
     const idCardWrapper = document.querySelector(".id-wrapper");
 
-    if (isBinusian) {
-        flazzCardWrapper.style.display = "block";
-        idCardWrapper.style.display = "none";
-    } else {
-        flazzCardWrapper.style.display = "none";
-        idCardWrapper.style.display = "block";
-    }
 
     if (storedGroupData) {
         const groupData = JSON.parse(storedGroupData);
@@ -29,6 +20,16 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isBinusianDisplay) isBinusianDisplay.innerText = is_binusian === "1" ? "Yes" : "No";
     } else {
         console.error("Data tidak ditemukan di localStorage.");
+    }
+
+    const isBinusian = document.getElementById("isBinusianDisplay").innerText.trim() === "Yes";
+    
+    if (isBinusian) {
+        flazzCardWrapper.style.display = "block";
+        idCardWrapper.style.display = "none";
+    } else {
+        flazzCardWrapper.style.display = "none";
+        idCardWrapper.style.display = "block";
     }
 });
 
