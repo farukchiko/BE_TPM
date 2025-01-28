@@ -7,7 +7,7 @@ use App\Models\File;
 use App\Models\Member;
 use App\Models\Team;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash; // Pastikan Hash diimpor
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
@@ -19,11 +19,15 @@ class RegisterController extends Controller
             $validated = $request->validate([
                 'team_name' => 'required|string|max:255',
                 'is_binusian' => 'required|boolean',
-                'password' => 'required|confirmed|min:6',
+                'password' => [
+                    'required',
+                    'confirmed',
+                    'min:8',
+                    'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/'], // Password harus mengandung huruf kecil, huruf besar, angka, dan karakter khusus
                 'leader.name' => 'required|string|max:255',
                 'leader.email' => 'required|email|unique:members,email',
-                'leader.phone' => 'nullable|string|max:20',
-                'leader.line_id' => 'nullable|string|max:50',
+                'leader.phone' => 'nullable|string|min:9|unique:members,phone',
+                'leader.line_id' => 'nullable|string|max:50|unique:members,line_id',
                 'leader.github_id' => 'nullable|string|max:50',
                 'leader.birth_place' => 'nullable|string|max:100',
                 'leader.birth_date' => 'nullable|date',
@@ -31,6 +35,7 @@ class RegisterController extends Controller
                 'members.*.email' => 'required|email|unique:members,email',
                 'files.cv' => 'required|file|mimes:pdf|max:2048',
                 'files.id_card' => 'required|file|mimes:jpg,png,pdf|max:2048',
+                'files.flazz_card' => 'required|file|mimes:jpg,png,pdf|max:2048',
             ]);
 
             // Simpan tim
@@ -62,6 +67,7 @@ class RegisterController extends Controller
             // Simpan file
             $cvPath = $request->file('files.cv')->store('uploads/cv');
             $idCardPath = $request->file('files.id_card')->store('uploads/id_card');
+            $flazzCardPath = $request->file('files.flazz_card')->store('uploads/flazz_card');
 
             $cvFile = File::create([
                 'team_id' => $team->id,
@@ -73,13 +79,20 @@ class RegisterController extends Controller
                 'file_name' => 'ID Card',
                 'file_path' => $idCardPath,
             ]);
+            $flazzCardFile = File::create([
+                'team_id' => $team->id,
+                'file_name' => 'Flazz Card',
+                'file_path' => $flazzCardPath,
+            ]);
 
             Log::info('Files created:', [
                 'cv' => $cvFile->toArray(),
                 'id_card' => $idCardFile->toArray(),
             ]);
 
-            return response()->json(['message' => 'Team registered successfully'], 201);
+            return response()->json([
+                'message' => 'Team registered successfully',
+                'team_id' => $team -> id], 201);
         } catch (\Exception $e) {
             Log::error('Error during registration:', [
                 'error' => $e->getMessage(),

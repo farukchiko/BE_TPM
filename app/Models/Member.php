@@ -13,6 +13,7 @@ class Member extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'password',
         'team_id',
         'is_leader',
         'phone',
@@ -20,7 +21,6 @@ class Member extends Authenticatable
         'github_id',
         'birth_place',
         'birth_date',
-        'password',
     ];
 
     protected $hidden = [

@@ -16,6 +16,7 @@ return new class extends Migration
         $table->unsignedBigInteger('team_id');
         $table->string('name');
         $table->string('email');
+        $table->string('password')->nullable();
         $table->string('phone')->nullable();
         $table->string('line_id')->nullable();
         $table->string('github_id')->nullable();
