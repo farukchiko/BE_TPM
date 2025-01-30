@@ -11,17 +11,16 @@
     <script src="{{ asset('js/register-group.js')}}" defer></script>
 </head>
 
-<body>
+<body>  
     <div class="body">
         <div class="card">
             <img class="logoBNCC" src="{{ asset('assets/images/bncc-logo.svg')}}" alt="Logo BNCC">
             <div class="input-box">
-                <form class="input-form">
+                <form class="input-form" id="input-first-form">
                     <div class="group-wrapper">
                         <label for="groupName">Group Name</label>
                         <input type="text" id="groupName" name="team_name" placeholder="group name">
                         <div class="requirement">
-
                         </div>
                     </div>
 
@@ -56,11 +55,11 @@
 
                     <div class="statusBinusian">
                         <div class="radio-wrapper">
-                        <input type="radio" id="binusian" name="is_binusian" value="1">
-                        <label for="binusian">Binusian</label>
+                            <input type="radio" id="binusian" name="is_binusian" value="1">
+                            <label for="binusian">Binusian</label>
 
-                        <input type="radio" id="non-binusian" name="is_binusian" value="0">
-                        <label for="non-binusian">Non-Binusian</label>
+                            <input type="radio" id="non-binusian" name="is_binusian" value="0">
+                            <label for="non-binusian">Non-Binusian</label>
                         </div>
                     </div>
 

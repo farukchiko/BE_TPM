@@ -1,10 +1,11 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
 }
 
-html, body {
+html,
+body {
     overflow: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -15,12 +16,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle, #0054A5, #003E7A);
+    background: radial-gradient(circle, #0054a5, #003e7a);
     height: 100vh;
 }
 
 .card {
-    background: #FFFFFF;
+    background: #ffffff;
     width: 73%;
     max-width: 1050px;
     min-width: 1050px;
@@ -40,12 +41,12 @@ body {
 .input-box {
     width: 100%;
     max-width: 320px;
-    height: 330px;  /* Membatasi tinggi supaya ada scroll */
-    overflow-y: auto; /* Aktifkan scroll jika diperlukan */
+    height: 330px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    padding-right: 10px; /* Agar scroll tidak menutupi konten */
+    padding-right: 10px;
 }
 
 input::placeholder {
@@ -59,12 +60,12 @@ input::placeholder {
 }
 
 .input-error {
-    border-color: #B20110 !important;
+    border-color: #b20110 !important;
 }
 
 input:focus {
-    border-color: #0054A5 !important;
-    border: 1px solid #0054A5 !important;
+    border-color: #0054a5 !important;
+    border: 1px solid #0054a5 !important;
     outline: none !important;
 }
 
@@ -100,12 +101,12 @@ input:focus {
 }
 
 .tab:hover {
-    background-color: #0054A5;
+    background-color: #0054a5;
     color: white;
 }
 
 .tab.active {
-    background-color: #0054A5;
+    background-color: #0054a5;
     color: white;
 }
 
@@ -152,17 +153,18 @@ input:focus {
 
 .tab-pane > .member-input span {
     font-size: 10px;
-    color: #666666;
+    color: #b20110;
     margin-top: -5px;
+    display: none;
 }
 
-.register-button {
+.final-register-button {
     margin-top: 20px;
     width: 100%;
     height: 44px;
     padding: 10px;
-    background-color: #0054A5;
-    color: #FFFFFF;
+    background-color: #0054a5;
+    color: #ffffff;
     font-size: 16px;
     border: none;
     border-radius: 6px;
@@ -171,6 +173,6 @@ input:focus {
 }
 
 .register-button:disabled {
-    background-color: #B0B0B0;
+    background-color: #b0b0b0;
     cursor: not-allowed;
 }

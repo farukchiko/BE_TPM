@@ -16,7 +16,7 @@
         <div class="card">
             <img class="logoBNCC" src="{{ asset('assets/images/bncc-logo.svg')}}" alt="LOGO BNCC">
             <div class="input-box">
-                <form class="input-form" action="/register-member" method="POST" enctype="multipart/form-data">
+                <form class="input-form" action="/register-member"  enctype="multipart/form-data">
                     @csrf
                     <div class="form-step active" id="step-1">
                         <div class="name-wrapper">
@@ -162,7 +162,7 @@
                                 <div class="upload-cv-wrapper file-input-wrapper">
                                     <input type="file" class="file-input" id="uploadCv" name="files[cv]" accept=".pdf,.jpg,.jpeg,.png" required>
                                     <label class="upload-button" for="uploadCv">
-                                    <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
+                                        <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
                                     </label>
                                 </div>
 
@@ -177,7 +177,7 @@
                                 <div class="upload-flazz-wrapper file-input-wrapper">
                                     <input type="file" class="file-input" id="uploadFlazz" name="uploadFlazz" accept=".pdf,.jpg,.jpeg,.png">
                                     <label class="upload-button" for="uploadFlazz">
-                                    <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
+                                        <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
                                     </label>
                                 </div>
 
@@ -192,7 +192,7 @@
                                 <div class="upload-id-wrapper file-input-wrapper">
                                     <input type="file" class="file-input" id="uploadId" name="files[id_card]" accept=".pdf,.jpg,.jpeg,.png">
                                     <label class="upload-button" for="uploadId">
-                                    <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
+                                        <img src="{{ asset('assets/icons/ic-upload-files.svg')}}" alt="upload">
                                     </label>
                                 </div>
 
