@@ -52,57 +52,42 @@
             <h3>Mentors</h3>
             <div class="profile-group">
                 <div class="mentor-group">
-                    <img src="{{ asset('assets/images/dummy-mentor.svg')}}" alt="Dummy Mentor">
-                    <p>Gojo Satoru</p>
-                    <span>CEO Jujutsu</span>
+                    <img src="{{ asset('assets/images/mentor-metta.svg')}}" alt="Dummy Mentor">
+                    <p>Metta Satyani W</p>
+                    <span>Risk Assurance</span>
                 </div>
                 <div class="mentor-group">
-                    <img src="{{ asset('assets/images/dummy-mentor.svg')}}" alt="Dummy Mentor">
-                    <p>Gojo Satoru</p>
-                    <span>CEO Jujutsu</span>
+                    <img src="{{ asset('assets/images/mentor-deni.svg')}}" alt="Dummy Mentor">
+                    <p>Deni Ekel Sembiring</p>
+                    <span>Business Analyst</span>
                 </div>
                 <div class="mentor-group">
-                    <img src="{{ asset('assets/images/dummy-mentor.svg')}}" alt="Dummy Mentor">
-                    <p>Gojo Satoru</p>
-                    <span>CEO Jujutsu</span>
+                    <img src="{{ asset('assets/images/mentor-ray.svg')}}" alt="Dummy Mentor">
+                    <p>Ray Tommy</p>
+                    <span>Senior UI/UX Designer</span>
                 </div>
                 <div class="mentor-group">
-                    <img src="{{ asset('assets/images/dummy-mentor.svg')}}" alt="Dummy Mentor">
-                    <p>Gojo Satoru</p>
-                    <span>CEO Jujutsu</span>
+                    <img src="{{ asset('assets/images/mentor-gagas.svg')}}" alt="Dummy Mentor">
+                    <p>Gagas Manqunazara</p>
+                    <span>Software Engineer</span>
                 </div>
                 <div class="mentor-group">
-                    <img src="{{ asset('assets/images/dummy-mentor.svg')}}" alt="Dummy Mentor">
-                    <p>Gojo Satoru</p>
-                    <span>CEO Jujutsu</span>
-                </div>
-                <div class="mentor-group">
-                    <img src="{{ asset('assets/images/dummy-mentor.svg')}}" alt="Dummy Mentor">
-                    <p>Gojo Satoru</p>
-                    <span>CEO Jujutsu</span>
+                    <img src="{{ asset('assets/images/mentor-yosianus.svg')}}" alt="Dummy Mentor">
+                    <p>Yosianus Antonie</p>
+                    <span>Software Engineer</span>
                 </div>
             </div>
 
             <div class="second-line">
                 <div class="mentor-group">
-                    <img src="{{ asset('assets/images/dummy-mentor.svg')}}" alt="Dummy Mentor">
-                    <p>Gojo Satoru</p>
-                    <span>CEO Jujutsu</span>
+                    <img src="{{ asset('assets/images/mentor-surya.svg')}}" alt="Dummy Mentor">
+                    <p>Surya Sujarwo</p>
+                    <span>Lecture and RnD</span>
                 </div>
                 <div class="mentor-group">
-                    <img src="{{ asset('assets/images/dummy-mentor.svg')}}" alt="Dummy Mentor">
-                    <p>Gojo Satoru</p>
-                    <span>CEO Jujutsu</span>
-                </div>
-                <div class="mentor-group">
-                    <img src="{{ asset('assets/images/dummy-mentor.svg')}}" alt="Dummy Mentor">
-                    <p>Gojo Satoru</p>
-                    <span>CEO Jujutsu</span>
-                </div>
-                <div class="mentor-group">
-                    <img src="{{ asset('assets/images/dummy-mentor.svg')}}" alt="Dummy Mentor">
-                    <p>Gojo Satoru</p>
-                    <span>CEO Jujutsu</span>
+                    <img src="{{ asset('assets/images/mentor-chirag.svg')}}" alt="Dummy Mentor">
+                    <p>Chirag (Krish) Mangwani</p>
+                    <span>Associate Product Engineer</span>
                 </div>
             </div>
         </div>
@@ -111,19 +96,19 @@
             <h3>Jurys</h3>
             <div class="profile-group">
                 <div class="jury-group">
-                    <img src="{{ asset('assets/images/dummy-mentor.svg')}}" alt="Dummy Mentor">
-                    <p>Gojo Satoru</p>
-                    <span>CEO Jujutsu</span>
+                    <img src="{{ asset('assets/images/jury-dustin.svg')}}" alt="Dummy Mentor">
+                    <p>Dustin Rinaldy Wolff</p>
+                    <span class="jabatan">Analytics Consulting Manager APAC<br>@Teleperformance</span>
                 </div>
                 <div class="jury-group">
-                    <img src="{{ asset('assets/images/dummy-mentor.svg')}}" alt="Dummy Mentor">
-                    <p>Gojo Satoru</p>
-                    <span>CEO Jujutsu</span>
+                    <img src="{{ asset('assets/images/jury-rondi.svg')}}" alt="Dummy Mentor">
+                    <p>Rondi Torowitan</p>
+                    <span class="jabatan">Digital Transformation Manager<br>@Teleperformance</span>
                 </div>
                 <div class="jury-group">
-                    <img src="{{ asset('assets/images/dummy-mentor.svg')}}" alt="Dummy Mentor">
-                    <p>Gojo Satoru</p>
-                    <span>CEO Jujutsu</span>
+                    <img src="{{ asset('assets/images/jury-herdian.svg')}}" alt="Dummy Mentor">
+                    <p>Herdian Abdillah</p>
+                    <span class="jabatan">IT APAC Application Support<br>@Teleperformance</span>
                 </div>
             </div>
         </div>
@@ -362,12 +347,13 @@
     <section class="media-section" id="media-section">
         <h2>Media Partners</h2>
         <div class="media-gallery">
-            <img src="{{ asset('assets/images/dummy-sponsor.svg')}}" alt="Dummy sponsor">
-            <img src="{{ asset('assets/images/dummy-sponsor.svg')}}" alt="Dummy sponsor">
-            <img src="{{ asset('assets/images/dummy-sponsor.svg')}}" alt="Dummy sponsor">
-            <img src="{{ asset('assets/images/dummy-sponsor.svg')}}" alt="Dummy sponsor">
-            <img src="{{ asset('assets/images/dummy-sponsor.svg')}}" alt="Dummy sponsor">
-            <img src="{{ asset('assets/images/dummy-sponsor.svg')}}" alt="Dummy sponsor">
+            <img src="{{ asset('assets/images/media-digital.svg')}}" alt="Dummy sponsor">
+            <img src="{{ asset('assets/images/media-nocturnailed.svg')}}" alt="Dummy sponsor">
+            <img src="{{ asset('assets/images/media-loker.svg')}}" alt="Dummy sponsor">
+            <img src="{{ asset('assets/images/media-mata.svg')}}" alt="Dummy sponsor">
+            <img src="{{ asset('assets/images/media-binus.svg')}}" alt="Dummy sponsor">
+            <img src="{{ asset('assets/images/media-yuk.svg')}}" alt="Dummy sponsor">
+            <img src="{{ asset('assets/images/media-coding.svg')}}" alt="Dummy sponsor">
         </div>
     </section>
 
