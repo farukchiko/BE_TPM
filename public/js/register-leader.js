@@ -33,6 +33,17 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         console.error("Data tidak ditemukan di localStorage.");
     }
+
+    const isBinusian =
+        document.getElementById("isBinusianDisplay").innerText.trim() === "Yes";
+
+    if (isBinusian) {
+        flazzCardWrapper.style.display = "block";
+        idCardWrapper.style.display = "none";
+    } else {
+        flazzCardWrapper.style.display = "none";
+        idCardWrapper.style.display = "block";
+    }
 });
 
 function validateStep1() {
