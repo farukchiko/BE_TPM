@@ -118,7 +118,6 @@ btnLoginAsAdmin.addEventListener("click", async function (event) {
             }
         } catch (error) {
             console.error("Error:", error.message);
-            // alert("An error occurred during login. Please try again.");
         }
     }
 });

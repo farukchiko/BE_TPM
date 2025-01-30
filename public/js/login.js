@@ -13,7 +13,7 @@ iconEyes.addEventListener("click", () => {
         : "/assets/icons/ic-eyes-close.svg";
 });
 
-btnLogin.addEventListener("click", function (event) {
+btnLogin.addEventListener("click", async function (event) {
     event.preventDefault();
 
     const teamName = document.getElementById("input-team").value;
@@ -60,9 +60,61 @@ btnLogin.addEventListener("click", function (event) {
     }
 
     if (isValid) {
-        console.log("Form is valid, proceed with login...");
-        event.preventDefault();
-        window.location.href = "/user/dashboard";
+        try {
+            const response = await fetch(
+                "http://127.0.0.1:8000/api/login-user",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        team_name: teamName,
+                        password: password,
+                    }),
+                }
+            );
+
+            if (!response.ok) {
+                console.log(`Error status: ${response.status}`);
+                const data = await response.json();
+                console.log("Response data:", data);
+
+                if (data.message === "Invalid credentials") {
+                    document.getElementById("team-error").textContent =
+                        "Invalid team or password.";
+                    document.getElementById("team-error").style.display =
+                        "block";
+                    document.getElementById("pass-error").textContent =
+                        "Invalid team or password.";
+                    document.getElementById("pass-error").style.display =
+                        "block";
+                    document
+                        .getElementById("input-team")
+                        .classList.add("error");
+                    document
+                        .getElementById("input-eyes")
+                        .classList.add("error")
+                        .parentElement.classList.add("error");
+
+                    isValid = false;
+                } else {
+                    alert(data.message || "Login failed.");
+                }
+            } else {
+                const data = await response.json();
+                if (data.token) {
+                    alert("Login successful!");
+                    localStorage.setItem("adminToken", data.token);
+                    localStorage.setItem("isLoggedIn", "true");
+                    window.location.href = "/user/dashboard";
+                } else {
+                    alert(data.message || "Login failed.");
+                }
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
     }
 });
 

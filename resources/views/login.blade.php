@@ -29,7 +29,7 @@
         </div>
         <div class="input-wrapper">
           <p class="input-name">Password</p>
-          <div class="input-eyes">
+          <div class="input-eyes" id="input-eyes">
             <input type="password" placeholder="password" class="form-input-pass" id="input-pass" />
             <div class="eyes-container">
               <img src="{{ asset('assets/icons/ic-eyes-open.svg') }}" alt="Icon Eyes" id="ic-eyes" />
