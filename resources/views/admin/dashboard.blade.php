@@ -48,6 +48,47 @@
     </div>
     <!-- END MODAL DELETE -->
 
+    <!-- MODAL EDIT -->
+    <div id="modal-edit" class="modal hidden">
+        <div class="modal-content-edit">
+            <div class="top-content">
+                <p class="sub-text">Edit Team</p>
+                <button id="btn-close-edit" class="btn-close-edit">
+                    <img src="../assets/icons/ic-close.svg" alt="Icon Close" id="btn-close" />
+                </button>
+            </div>
+            <p class="team-name">Team Rocket</p>
+
+            <div class="edit-container">
+                <div class="edit-team-container">
+                    <span>Name: [Team Rocket]</span>
+                    <input type="text" placeholder="(Editable Text Field)" id="edit-team" class="edit-team">
+                </div>
+
+                <div class="edit-leader-container">
+                    <span>Leader: [Gojo Sotaru]</span>
+                    <input type="text" placeholder="(Editable Text Field)" id="edit-leader" class="edit-leader">
+                </div>
+
+                <div class="edit-member-container">
+                    <span>Members:</span>
+                    <ul>
+                        <div class="member-edit">
+                        <li>[Nick Leister]</li><input type="text" placeholder="(Editable Text Field)" id="edit-member" class="edit-member">
+                        </div>
+                        <div class="member-edit">
+                        <li>[Skyelar]</li><input type="text" placeholder="(Editable Text Field)" id="edit-member" class="edit-member">
+                        </div>
+                    </ul>
+                </div>
+            </div>
+
+            <button id="btn-save" class="btn-save">Save Changes</button>
+
+        </div>
+    </div>
+    <!-- END MODAL EDIT -->
+
     <!-- MODAL VIEW-->
     <div id="modal-view" class="modal hidden">
       <div class="modal-content-view">
