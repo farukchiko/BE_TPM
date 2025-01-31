@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMail;
 
 class ContactController extends Controller
 {
@@ -20,15 +22,15 @@ class ContactController extends Controller
                 'message' => 'required|string'
             ]);
 
-            // Simpan contact
-            $contact = Contact::create([
-                'name' => $validated['name'],
-                'email' => $validated['email'],
-                'subject' => $validated['subject'],
-                'message' => $validated['message']
-            ]);
+            // Simpan ke database
+            $contact = Contact::create($validated);
 
-            Log::info('Contact created:', $contact->toArray());
+            Log::info('Contact successfully saved', ['contact' => $contact]);
+
+            // Kirim email ke admin menggunakan Mailtrap
+            Mail::to(env('MAIL_FROM_ADDRESS', 'admin@example.com'))->send(new ContactMail($contact));
+
+            Log::info('Email sent successfully to admin', ['email' => env('MAIL_FROM_ADDRESS')]);
 
             return response()->json([
                 'message' => 'Message sent successfully',
@@ -36,7 +38,7 @@ class ContactController extends Controller
             ], 201);
 
         } catch (\Exception $e) {
-            Log::error('Error during sending message:', [
+            Log::error('Error sending message', [
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString()
             ]);
