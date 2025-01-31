@@ -17,8 +17,9 @@ Route::post('/register-user', [RegisterController::class, 'register']);
 Route::post('/login-user', [LoginController::class, 'loginUser']);
 Route::post('/login-admin', [LoginController::class, 'loginAdmin']);
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:sanctum');
- // Route untuk contact
- Route::post('/contact', [ContactController::class, 'store']);
+
+// Route untuk contact
+Route::post('/contact', [ContactController::class, 'store']);
 
 // Protected routes
 Route::middleware('auth:sanctum')->group(function () {
@@ -30,6 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
     
     //Route untuk Dashboard User (View Data Tim dan File) by user Id
     // Route::get('/user/dashboard/{userId}', [User_DashboardController::class, 'show'])->name('user.dashboard');
+    Route::post('/user/dashboard/{team_id}', [User_DashboardController::class, 'show'])->name('user.dashboard');
 
     // by user login
     Route::middleware('auth:sanctum')->get('/user/dashboard', [User_DashboardController::class, 'show']);

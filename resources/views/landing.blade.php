@@ -294,7 +294,7 @@
             </div>
 
             <div class="timeline-box" id="competition-day">
-                <img src="{{ asset('assets/images/group-photo.svg')}}" alt="dummy-group">>
+                <img src="{{ asset('assets/images/group-photo.svg')}}" alt="dummy-group">
                 <div class="timeline-box-content">
                     <h3>Competition Day</h3>
                     <span>Thursday, 20 June 2025</span>
@@ -384,7 +384,7 @@
                 <textarea name="message" id="message" placeholder="Message"></textarea>
             </div>
 
-            <button type="submit">Send Message</button>
+            <button type="submit" id="btn-submit-contact">Send Message</button>
         </div>
     </section>
 
