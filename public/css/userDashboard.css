@@ -224,6 +224,23 @@ body {
     margin-bottom: 42px;
 }
 
+.member-container {
+    margin-top: 26px;
+}
+
+.member-name {
+    font-size: var(--dp-28);
+    font-weight: var(--weight-semibold);
+    margin-bottom: 42px;
+    color: var(--color-primary);
+}
+
+.member-list {
+    color: black;
+    font-size: var(--dp-18);
+    font-weight: var(--weight-regular);
+}
+
 .text-leader {
     font-size: var(--dp-18);
     font-weight: var(--weight-regular);
@@ -235,6 +252,14 @@ body {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 24px;
+}
+
+.detail-wrap-member {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+    gap: 10px;
 }
 
 .last {

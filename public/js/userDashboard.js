@@ -36,8 +36,33 @@ const detailSection = [
     },
 ];
 
-const descContainer = document.querySelector(".detail-container");
+const teamMembers = [
+    {
+        icon: "../../assets/icons/ic-person.svg",
+        desc: "Member",
+        value: "Haruka Ozawa",
+    },
+    {
+        icon: "../../assets/icons/ic-person.svg",
+        desc: "Member",
+        value: "Satoru Gojo",
+    },
+    {
+        icon: "../../assets/icons/ic-person.svg",
+        desc: "Member",
+        value: "Yuji Itadori",
+    },
+    {
+        icon: "../../assets/icons/ic-person.svg",
+        desc: "Member",
+        value: "Megumi Fushiguro",
+    },
+];
 
+const descContainer = document.querySelector(".detail-container");
+const membContainer = document.querySelector(".member-list-container");
+
+// detail list
 detailSection.forEach((detail) => {
     const detailWrap = document.createElement("div");
     detailWrap.classList.add("detail-wrap");
@@ -64,6 +89,30 @@ detailSection.forEach((detail) => {
     detailWrap.appendChild(value);
 
     descContainer.appendChild(detailWrap);
+});
+
+// member list
+teamMembers.forEach((member) => {
+    const detailWrap = document.createElement("div");
+    detailWrap.classList.add("detail-wrap-member");
+
+    const iconText = document.createElement("div");
+    iconText.classList.add("icon-text");
+
+    const img = document.createElement("img");
+    img.src = member.icon;
+    img.alt = `Icon ${member.desc}`;
+
+    iconText.appendChild(img);
+
+    const value = document.createElement("p");
+    value.classList.add("member-list");
+    value.textContent = member.value;
+
+    detailWrap.appendChild(iconText);
+    detailWrap.appendChild(value);
+
+    membContainer.appendChild(detailWrap);
 });
 
 // logout handler

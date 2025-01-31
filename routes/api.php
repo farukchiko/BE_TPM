@@ -22,13 +22,17 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth:san
 
 // Protected routes
 Route::middleware('auth:sanctum')->group(function () {
+
     // Route khusus user
     Route::get('/user/profile', function (Request $request) {
         return response()->json(['user' => $request->user()]);
     });
     
-    //Route untuk Dashboard User (View Data Tim dan File)
-    Route::get('/user/dashboard/{userId}', [User_DashboardController::class, 'show'])->name('user.dashboard');
+    //Route untuk Dashboard User (View Data Tim dan File) by user Id
+    // Route::get('/user/dashboard/{userId}', [User_DashboardController::class, 'show'])->name('user.dashboard');
+
+    // by user login
+    Route::middleware('auth:sanctum')->get('/user/dashboard', [User_DashboardController::class, 'show']);
     
     
     // Route khusus admin

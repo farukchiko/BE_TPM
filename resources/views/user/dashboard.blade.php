@@ -80,6 +80,13 @@
             </div>
           </div>
         </div>
+
+        <div class="member-container container">
+          <h1 class="member-name">Member Information</h1>
+          <div class="member-list-container">
+            <!-- js -->
+          </div>
+        </div>
       </div>
 
       <div class="right-content">
