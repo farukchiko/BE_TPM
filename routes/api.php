@@ -9,7 +9,6 @@ use App\Http\Controllers\Api\Admin_GetTeamDetails;
 use App\Http\Controllers\Api\Admin_EditTeam;
 use App\Http\Controllers\Api\AdminDeleteTeam;
 use App\Http\Controllers\Api\ContactController;
-
 use Illuminate\Http\Request;
 
 // Public routes
@@ -28,32 +27,22 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user/profile', function (Request $request) {
         return response()->json(['user' => $request->user()]);
     });
-    
-    //Route untuk Dashboard User (View Data Tim dan File) by user Id
-    // Route::get('/user/dashboard/{userId}', [User_DashboardController::class, 'show'])->name('user.dashboard');
-    Route::post('/user/dashboard/{team_id}', [User_DashboardController::class, 'show'])->name('user.dashboard');
 
-    // by user login
-    Route::middleware('auth:sanctum')->get('/user/dashboard', [User_DashboardController::class, 'show']);
-    
-    
-    // Route khusus admin
+    // Dashboard User (View Data Tim dan File) by user login
+    Route::get('/user/dashboard', [User_DashboardController::class, 'show'])->name('user.dashboard');
+    Route::post('/user/dashboard/{team_id}', [User_DashboardController::class, 'show']);
+
+    // Route khusus admin 
     Route::middleware('admin')->group(function () {
-        //Get All Teams
-        Route:: get('/admin-dashboard/get-all-teams', [Admin_GetAllTeams::class, 'show'])->name('admin.dashboard');
+        Route::get('/admin-dashboard/get-all-teams', [Admin_GetAllTeams::class, 'show'])->name('admin.dashboard');
+        Route::get('/admin-dashboard/get-team-details/{teamId}', [Admin_GetTeamDetails::class, 'show'])->name('admin.dashboard.detail');
+        Route::put('/admin/edit-team/{teamId}', [Admin_EditTeam::class, 'update'])->name('admin.edit-team');
+        Route::delete('/admin/delete-teams/{id}', [AdminDeleteTeam::class, 'destroy']);
 
-        // Get Team Details
-        Route:: get('/admin-dashboard/get-team-details/{teamId}', [Admin_GetTeamDetails::class, 'show'])->name('admin.dashboard.detail');
-        
-        //rute ini hanya akan mengembalikan pesan selamat datang (welcome message) saat mengetes token admin
+        // Route untuk dashboard admin
         Route::get('/admin/dashboard', function () {
             return response()->json(['message' => 'Welcome Admin']);
         });
-        // Route untuk mengupdate tim
-        Route::put('/admin/edit-team/{teamId}', [Admin_EditTeam::class, 'update'])->name('admin.edit-team');
-
-        // Route untuk menghapus tim
-        Route::delete('/admin/delete-teams/{id}', [AdminDeleteTeam::class, 'destroy']);
-
     });
 });
+
