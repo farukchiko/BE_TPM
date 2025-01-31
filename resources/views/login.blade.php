@@ -46,7 +46,7 @@
         </div>
         <p class="text-confirm">
           Don't have account?
-          <a href="/register">Sign up</a>
+          <a href="{{ route('register-group') }}">Sign up</a>
         </p>
       </div>
     </div>

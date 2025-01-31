@@ -44,9 +44,6 @@
           <button class="btn-login" id="btn-login-as-admin">Login</button>
           <button class="btn-login-admin" id="btn-login-participant">Login as Participant</button>
         </div>
-        <p class="text-confirm">
-          Don't have account?
-          <a href="/register">Sign up</a>
         </p>
       </div>
     </div>
