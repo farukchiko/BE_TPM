@@ -6,34 +6,35 @@ const btnClose = document.getElementById("btn-close");
 const btnCloseEdit= document.getElementById("btn-close-edit");
 const btnCloseView = document.getElementById("btn-close-view");
 
-function fetchTeamData(teamId) {
-    fetch(`/api/getTeamData?team_id=${teamId}`)
-        .then(response => response.json())
-        .then(teamData => {
-            processTeamData(teamData); // Proses data setelah diterima
-        })
-        .catch(error => {
-            console.error("Error fetching team data:", error);
-        });
-}
+// function fetchTeamData(teamId) {
+//     console.log("Test");
+//     fetch(`/api/getTeamData?team_id=${teamId}`)
+//         .then(response => response.json())
+//         .then(teamData => {
+//             processTeamData(teamData); // Proses data setelah diterima
+//         })
+//         .catch(error => {
+//             console.error("Error fetching team data:", error);
+//         });
+// }
 
-function processTeamData(teamData) {
-    let leader = '';
-    let members = [];
+// function processTeamData(teamData) {
+//     let leader = '';
+//     let members = [];
 
-    teamData.forEach(member => {
-        if (member.is_leader === 1) {
-            leader = member.member_name;
-        } else {
-            members.push(member.member_name);
-        }
-    });
+//     teamData.forEach(member => {
+//         if (member.is_leader === 1) {
+//             leader = member.member_name;
+//         } else {
+//             members.push(member.member_name);
+//         }
+//     });
 
-    console.log('Leader:', leader);
-    console.log('Members:', members);
+//     console.log('Leader:', leader);
+//     console.log('Members:', members);
 
-    openEditModal(teamName, members, leader);
-}
+//     openEditModal(teamName, members, leader);
+// }
 
 // delete handler
 document.querySelectorAll(".btn-delete").forEach((btnDelete) => {
@@ -66,13 +67,13 @@ function openEditModal(teamName, members, leader) {
 
     const memberList = document.getElementById('edit-member-list');
     memberList.innerHTML = '';
-    members.split(',').forEach(member => {
-    memberList.innerHTML += `
-        <div class="member-edit">
-        <li>${member}</li>
-        <input type="text" class="edit-member" placeholder="(Editable text field)">
-        </div>
-    `;
+    members.forEach(member => {
+        memberList.innerHTML += `
+            <div class="member-edit">
+                <li>${member}</li>
+                <input type="text" class="edit-member" placeholder="(Editable text field)">
+            </div>
+        `;
     });
 
     document.getElementById('modal-edit').classList.remove('hidden');

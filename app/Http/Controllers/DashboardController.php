@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $teams = Team::with(['members', 'files'])->get();
+        $teams = Team::with(['members', 'files', 'leader'])->get();
 
         return view('admin.dashboard', compact('teams'));
     }

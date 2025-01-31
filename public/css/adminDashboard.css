@@ -177,7 +177,7 @@ body {
     background-color: var(--color-white);
     padding: 30px;
     width: 520px;
-    height: 354px;
+    height: auto;
     border-radius: 15px;
 }
 

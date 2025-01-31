@@ -16,6 +16,11 @@ class Team extends Model
         return $this->hasMany(Member::class, 'team_id');
     }
 
+    public function leader()
+    {
+        return $this->hasOne(Member::class)->where('is_leader', 1);
+    }
+
     public function files()
     {
         return $this->hasMany(File::class);

@@ -61,7 +61,7 @@
 
             <div class="edit-container">
                 <div class="edit-team-container">
-                    <span>Name: <span id="edit-team-name-display"></span></span>
+                    <span>Team Name: <span id="edit-team-name-display"></span></span>
                     <input type="text" id="edit-team" class="edit-team" placeholder="Editable text field">
                 </div>
 
@@ -141,7 +141,14 @@
               <h2 class="regist-time" id="regist-time">{{ $team->created_at->format('d M Y') }}</h2>
               <div class="btn-control">
                 <button class="btn-view" id="btn-view" onclick="openViewModal('{{ $team->team_name }}', '{{ $team->members->pluck('name')->join(', ') }}', '{{ $team->created_at->format('d M Y') }}')">View</button>
-                <button class="btn-edit" id="btn-edit" onclick="openEditModal('{{ $team->team_name }}', '{{ $team->members->pluck('name')->join(', ') }}', '{{ $team->leader->name ?? 'No Leader' }}')">Edit</button>
+                <button class="btn-edit" id="btn-edit"
+                    onclick="openEditModal(
+                        '{{ $team->team_name }}',
+                        {{ json_encode($team->members->where('is_leader', 0)->pluck('name')) }},
+                        '{{ $team->leader->name ?? 'No Leader' }}'
+                    )">
+                    Edit
+                </button>
                 <button class="btn-delete" id="btn-delete" onclick="openDeleteModal('{{ $team->team_name }}')">Delete</button>
               </div>
             </div>
