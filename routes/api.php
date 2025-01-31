@@ -40,10 +40,6 @@ Route::middleware('auth:sanctum')->group(function () {
         // Get Team Details
         Route:: get('/admin-dashboard/get-team-details/{teamId}', [Admin_GetTeamDetails::class, 'show'])->name('admin.dashboard.detail');
         
-        //rute ini hanya akan mengembalikan pesan selamat datang (welcome message) saat mengetes token admin
-        Route::get('/admin/dashboard', function () {
-            return response()->json(['message' => 'Welcome Admin']);
-        });
         // Route untuk mengupdate tim
         Route::put('/admin/edit-team/{teamId}', [Admin_EditTeam::class, 'update'])->name('admin.edit-team');
 

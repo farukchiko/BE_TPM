@@ -13,6 +13,8 @@ class User_DashboardController extends Controller
 {
     public function show(Request $request, $team_id)
     {
+        $team_id = Auth::user()->team_id;
+
         $team = Team::findOrFail($team_id);
         $files = File::where('team_id', $team_id)->get();
         $leader = $team->members()->where('is_leader', true)->first();
