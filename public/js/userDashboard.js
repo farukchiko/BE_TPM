@@ -115,6 +115,12 @@ teamMembers.forEach((member) => {
     membContainer.appendChild(detailWrap);
 });
 
+// check login status
+const isLoggedIn = localStorage.getItem("isLoggedIn");
+if (isLoggedIn !== "true") {
+    window.location.href = "/login";
+}
+
 // logout handler
 const btnLogout = document.getElementById("btn-logout");
 const btnClose = document.getElementById("btn-close");
@@ -127,8 +133,9 @@ btnLogout.addEventListener("click", () => {
 });
 
 btnConfirmLogout.addEventListener("click", () => {
-    localStorage.removeItem("token");
-    window.location.href = "/";
+    localStorage.removeItem("userToken");
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "/login";
 });
 
 btnCancelLogout.addEventListener("click", () => {

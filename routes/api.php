@@ -30,12 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     
     //Route untuk Dashboard User (View Data Tim dan File) by user Id
-    // Route::get('/user/dashboard/{userId}', [User_DashboardController::class, 'show'])->name('user.dashboard');
-    Route::post('/user/dashboard/{team_id}', [User_DashboardController::class, 'show'])->name('user.dashboard');
-
-    // by user login
-    Route::middleware('auth:sanctum')->get('/user/dashboard', [User_DashboardController::class, 'show']);
-    
+    Route::get('/user/dashboard/{userId}', [User_DashboardController::class, 'show'])->name('user.dashboard');
     
     // Route khusus admin
     Route::middleware('admin')->group(function () {

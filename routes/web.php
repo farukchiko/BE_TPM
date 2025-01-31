@@ -3,15 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RegisterController;
 
-// Halaman login
-Route::get('/login/admin', [AdminController::class, 'showLoginForm'])->name('admin.login');
-Route::post('/login/admin', [AdminController::class, 'login'])->name('admin.login.post');
-
-Route::middleware(['auth:admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
-});
-
 // landing
 Route::get('/', function () {
     return view('landing');
@@ -49,15 +40,3 @@ Route::get('/register-leader', function () {
 Route::get('/register-member', function () {
     return view('register-member');
 })->name('register-member');
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
-
-// Route::post('/register-member', [RegisterController::class, 'register']);
