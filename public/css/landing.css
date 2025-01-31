@@ -134,7 +134,7 @@ body {
     padding: 64px 56px;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 60px;
 }
 
 .mentor-section h2 {
@@ -147,8 +147,8 @@ body {
 .mentor-section > .mentors-element {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    margin-bottom: 80px;
+    gap: 36px;
+    margin-bottom: 20px;
 }
 
 .mentor-section > .mentors-element h3 {
@@ -162,6 +162,7 @@ body {
     display: flex;
     flex-direction: row;
     gap: 24px;
+    width: 240px;
 }
 
 .mentor-section > .mentors-element > .profile-group > .mentor-group {
@@ -182,6 +183,11 @@ body {
     font-size: 20px;
     line-height: 30px;
     color: rgba(102, 102, 102, 1);
+}
+
+.mentor-section > .mentors-element > .profile-group > .mentor-group img {
+    width: 240px;
+    height: 240px;
 }
 
 .mentor-section > .mentors-element > .second-line {
@@ -210,6 +216,11 @@ body {
     color: rgba(102, 102, 102, 1);
 }
 
+.mentor-section > .mentors-element > .second-line > .mentor-group img {
+    width: 240px;
+    height: 240px;
+}
+
 .mentor-section > .jurys-element {
     display: flex;
     flex-direction: column;
@@ -228,6 +239,7 @@ body {
     display: flex;
     flex-direction: row;
     gap: 24px;
+    width: 240px;
 }
 
 .mentor-section > .jurys-element > .profile-group > .jury-group {
@@ -250,10 +262,15 @@ body {
     color: rgba(102, 102, 102, 1);
 }
 
+.mentor-section > .jurys-element > .profile-group  > .jury-group img {
+    width: 240px;
+    height: 240px;
+}
+
 .about-section {
     width: calc(100vw - 24px);
     height: auto;
-    margin: 120px 12px 60px 12px;
+    margin: 180px 12px 60px 12px;
     background-color: rgba(230, 230, 230, 1);
     border-radius: 8px;
     box-sizing: border-box;
@@ -689,10 +706,16 @@ body {
     width: calc(100vw - 24px - 56px);
     display: flex;
     flex-direction: row;
-    gap: 24px;
+    gap: 48px;
     overflow-y: scroll;
     scrollbar-width: none;
     scroll-behavior: smooth;
+    align-items: center;
+}
+
+.media-section > .media-gallery img {
+    max-width: 400px;
+    max-height: 200px;
 }
 
 .contact-section {
