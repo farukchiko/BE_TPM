@@ -34,11 +34,15 @@ class RegisterController extends Controller
                 'members.*.name' => 'required|string|max:255',
                 'members.*.email' => 'required|email|unique:members,email',
                 'files.cv' => 'required|file|mimes:pdf|max:2048',
-                'files.id_card' => 'required|file|mimes:jpg,png,pdf|max:2048',
-                'files.flazz_card' => 'required|file|mimes:jpg,png,pdf|max:2048',
+
+                // id card for non binusian
+                'files.id_card' => 'sometimes|required_if:is_binusian,0|file|mimes:jpg,png,pdf|max:2048',
+
+                // flazz for binusian
+                'files.flazz_card' => 'sometimes|required_if:is_binusian,1|file|mimes:jpg,png,pdf|max:2048',
             ]);
 
-            // Simpan tim
+            // save tim
             $team = Team::create([
                 'team_name' => $validated['team_name'],
                 'is_binusian' => $validated['is_binusian'],
@@ -46,49 +50,53 @@ class RegisterController extends Controller
 
             Log::info('Team created:', $team->toArray());
 
-            // Tambahkan leader dengan password yang di-hash
+            // leader
             $leader = Member::create(array_merge($validated['leader'], [
                 'team_id' => $team->id,
                 'is_leader' => true,
-                'password' => Hash::make($validated['password']), // Hash password sebelum menyimpan
+                'password' => Hash::make($validated['password']), 
             ]));
 
             Log::info('Leader created:', $leader->toArray());
 
-            // Tambahkan anggota tim dengan password yang di-hash
+            // member
             foreach ($validated['members'] as $member) {
                 $newMember = Member::create(array_merge($member, [
                     'team_id' => $team->id,
-                    'password' => Hash::make($validated['password']), // Hash password sebelum menyimpan
+                    'password' => Hash::make($validated['password']), 
                 ]));
                 Log::info('Member created:', $newMember->toArray());
             }
 
-            // Simpan file
+            // save cv
             $cvPath = $request->file('files.cv')->store('uploads/cv');
-            $idCardPath = $request->file('files.id_card')->store('uploads/id_card');
-            $flazzCardPath = $request->file('files.flazz_card')->store('uploads/flazz_card');
-
             $cvFile = File::create([
                 'team_id' => $team->id,
                 'file_name' => 'CV',
                 'file_path' => $cvPath,
             ]);
-            $idCardFile = File::create([
-                'team_id' => $team->id,
-                'file_name' => 'ID Card',
-                'file_path' => $idCardPath,
-            ]);
-            $flazzCardFile = File::create([
-                'team_id' => $team->id,
-                'file_name' => 'Flazz Card',
-                'file_path' => $flazzCardPath,
-            ]);
 
-            Log::info('Files created:', [
-                'cv' => $cvFile->toArray(),
-                'id_card' => $idCardFile->toArray(),
-            ]);
+            // save id card
+            if ($validated['is_binusian'] == 0 && $request->hasFile('files.id_card')) {
+                $idCardPath = $request->file('files.id_card')->store('uploads/id_card');
+                $idCardFile = File::create([
+                    'team_id' => $team->id,
+                    'file_name' => 'ID Card',
+                    'file_path' => $idCardPath,
+                ]);
+                Log::info('ID Card saved:', $idCardFile->toArray());
+            }
+
+            // save flazz
+            if ($validated['is_binusian'] == 1 && $request->hasFile('files.flazz_card')) {
+                $flazzCardPath = $request->file('files.flazz_card')->store('uploads/flazz_card');
+                $flazzCardFile = File::create([
+                    'team_id' => $team->id,
+                    'file_name' => 'Flazz Card',
+                    'file_path' => $flazzCardPath,
+                ]);
+                Log::info('Flazz Card saved:', $flazzCardFile->toArray());
+            }
 
             return response()->json([
                 'message' => 'Team registered successfully',

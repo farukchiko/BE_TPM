@@ -42,7 +42,7 @@
     <!-- HEADER -->
     <section class="header" id="header">
       <nav>
-        <a href="userDashboard.html"><img src="../assets/images/img-bncc-logo.png" alt="Logo BNCC" class="img-logo" /></a>
+        <a href="/user/dashboard"><img src="../assets/images/img-bncc-logo.png" alt="Logo BNCC" class="img-logo" /></a>
         <button class="logout" id="btn-logout">
           <img src="../assets/icons/ic-logout.svg" alt="Logo Logout" class="ic-logout" />
           <p class="text-logout">Logout</p>
