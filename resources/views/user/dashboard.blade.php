@@ -21,12 +21,12 @@
         <div class="top-content">
           <div class="ic-close">
             <button id="btn-close" class="btn-close">
-              <img src="../assets/icons/ic-close.svg" alt="Icon Close" />
+              <img src="{{ asset('assets/icons/ic-close.svg') }}" alt="Icon Close" />
             </button>
           </div>
           <div class="warn-text">
             <div class="warn-wrap">
-              <img src="../assets/icons/ic-warning.svg" alt="Icon Warning" />
+              <img src="{{ asset('/assets/icons/ic-warning.svg') }}" alt="Icon Warning" />
             </div>
             <p class="text-confirm">Are you sure want to logout?</p>
           </div>
@@ -42,9 +42,9 @@
     <!-- HEADER -->
     <section class="header" id="header">
       <nav>
-        <a href="userDashboard.html"><img src="../assets/images/img-bncc-logo.png" alt="Logo BNCC" class="img-logo" /></a>
+        <a href="userDashboard.html"><img src="{{ asset('assets/images/img-bncc-logo.png') }}" alt="Logo BNCC" class="img-logo" /></a>
         <button class="logout" id="btn-logout">
-          <img src="../assets/icons/ic-logout.svg" alt="Logo Logout" class="ic-logout" />
+          <img src="{{ asset('assets/icons/ic-logout.svg') }}" alt="Logo Logout" class="ic-logout" />
           <p class="text-logout">Logout</p>
         </button>
       </nav>
@@ -56,23 +56,76 @@
     <section class="content" id="content">
       <div class="left-content">
         <div class="team-container container">
-          <h1 class="team-name">Team Rocket</h1>
+          <h1 class="team-name">{{ $team_name ?? 'Error : Team Name Not Found' }}</h1>
 
           <div>
             <h5 class="text-leader">Leader Information</h5>
-
+            
             <div>
-              <div class="detail-container"></div>
+
               <div class="detail-wrap">
                 <div class="icon-text">
-                  <img src="../assets/icons/ic-file.svg" alt="Icon File" />
+                  <img src="{{ asset('assets/icons/ic-person.svg') }}" alt="Icon Person" />
+                  <p class="detail-name">Fullname</p>
+                </div>
+
+                <div class="fullname">{{$leader['name']}}</div>
+              </div>
+              <div class="detail-wrap">
+                <div class="icon-text">
+                  <img src="{{ asset('assets/icons/ic-email.svg') }}" alt="Icon Email" />
+                  <p class="detail-name">Email</p>
+                </div>
+                <div class="fullname">{{$leader['email']}}</div>
+              </div>
+              <div class="detail-wrap">
+                <div class="icon-text">
+                  <img src="{{ asset('assets/icons/ic-whatsapp.svg') }}" alt="Icon Whatsapp" />
+                  <p class="detail-name">Whatsapp</p>
+                </div>
+                <div class="fullname">{{$leader['phone']}}</div>
+              </div>
+              <div class="detail-wrap">
+                <div class="icon-text">
+                  <img src="{{ asset('assets/icons/ic-line.svg') }}" alt="Icon Line" />
+                  <p class="detail-name">Line ID</p>
+                </div>
+                <div class="fullname">{{$leader['line_id']}}</div>
+              </div>
+              <div class="detail-wrap">
+                <div class="icon-text">
+                  <img src="{{ asset('assets/icons/ic-github.svg') }}" alt="Icon Github" />
+                  <p class="detail-name">Github ID/GitLab ID</p>
+                </div>
+                <div class="fullname">{{$leader['github_id']}}</div>
+              </div>
+              <div class="detail-wrap">
+                <div class="icon-text">
+                  <img src="{{ asset('assets/icons/ic-location.svg') }}" alt="Icon Location" />
+                  <p class="detail-name">Birth Place</p>
+                </div>
+                <div class="fullname">{{$leader['birth_place']}}</div>
+              </div>
+              <div class="detail-wrap">
+                <div class="icon-text">
+                  <img src="{{ asset('assets/icons/ic-person.svg') }}" alt="Icon Person" />
+                  <p class="detail-name">Birth Date</p>
+                </div>
+                <div class="fullname">{{$leader['birth_date']}}</div>
+              </div>
+              {{-- <div class="detail-container"></div> --}}
+              <div class="detail-wrap">
+                <div class="icon-text">
+                  <img src="{{ asset('assets/icons/ic-file.svg') }}" alt="Icon File" />
                   <p class="detail-name">CV</p>
                 </div>
                 <button class="detail-desc-input">View CV</button>
               </div>
+
+
               <div class="last">
                 <div class="icon-text">
-                  <img src="../assets/icons/ic-file.svg" alt="Icon File" />
+                  <img src="{{ asset('assets/icons/ic-file.svg') }}" alt="Icon File" />
                   <p class="detail-name">ID Card/Flazz</p>
                 </div>
                 <button class="detail-desc-input">View Card</button>
@@ -84,6 +137,14 @@
         <div class="member-container container">
           <h1 class="member-name">Member Information</h1>
           <div class="member-list-container">
+            @foreach($members as $member)
+                <div class="detail-wrap-member">
+                    <div class="icon-text">
+                        <img src="{{asset('assets/icons/ic-person.svg')}}" alt="Icon Person" />
+                    </div>
+                    <p class="member-list">{{ $member['name'] }}</p>
+                </div>
+            @endforeach
             <!-- js -->
           </div>
         </div>
@@ -95,7 +156,7 @@
 
           <div>
             <div class="timeline-event">
-              <img src="../assets/icons/ic-dot-active.svg" alt="Icon Dot Active" class="ic-dot" />
+              <img src="{{ asset('assets/icons/ic-dot-active.svg') }}" alt="Icon Dot Active" class="ic-dot" />
 
               <div>
                 <h5 class="timeline-heading">Open Registration</h5>
@@ -103,7 +164,7 @@
               </div>
             </div>
             <div class="timeline-event">
-              <img src="../assets/icons/ic-dot.svg" alt="Icon Dot Active" class="ic-dot" />
+              <img src="{{ asset('assets/icons/ic-dot-active.svg') }}" alt="Icon Dot Active" class="ic-dot" />
 
               <div>
                 <h5 class="timeline-heading">Close Registration</h5>
@@ -111,7 +172,7 @@
               </div>
             </div>
             <div class="timeline-event">
-              <img src="../assets/icons/ic-dot.svg" alt="Icon Dot Active" class="ic-dot" />
+              <img src="{{ asset('assets/icons/ic-dot-active.svg') }}" alt="Icon Dot Active" class="ic-dot" />
 
               <div>
                 <h5 class="timeline-heading">Technical Meetings</h5>
@@ -119,7 +180,7 @@
               </div>
             </div>
             <div class="timeline-event">
-              <img src="../assets/icons/ic-dot.svg" alt="Icon Dot Active" class="ic-dot" />
+              <img src="{{ asset('assets/icons/ic-dot-active.svg') }}" alt="Icon Dot Active" class="ic-dot" />
 
               <div>
                 <h5 class="timeline-heading">Competition Day</h5>
@@ -134,7 +195,7 @@
 
         <div class="contact-us">
           <div class="icon">
-            <img src="../assets/icons/ic-telephone.svg" alt="Icon Telepon" />
+            <img src="{{ asset('assets/icons/ic-telephone.svg') }}" alt="Icon Telepon" />
           </div>
           <div class="text">
             <h5 class="text-question">Have some question?</h5>

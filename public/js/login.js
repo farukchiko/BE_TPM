@@ -107,7 +107,7 @@ btnLogin.addEventListener("click", async function (event) {
                     alert("Login successful!");
                     localStorage.setItem("userToken", data.token);
                     localStorage.setItem("isLoggedIn", "true");
-                    window.location.href = "/user/dashboard";
+                    window.location.href = `/user/dashboard/${data.team.id}`;
                 } else {
                     alert(data.message || "Login failed.");
                 }

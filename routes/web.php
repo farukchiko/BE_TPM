@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RegisterController;
+use App\Http\Controllers\Api\User_DashboardController;
+
 
 // landing
 Route::get('/', function () {
@@ -24,9 +26,7 @@ Route::get('/admin/dashboard', function () {
 })->name('admin-dashboard');
 
 // user dashboard
-Route::get('/user/dashboard', function () {
-    return view('user.dashboard');
-})->name('user-dashboard');
+Route::get('/user/dashboard/{teamId}', [User_DashboardController::class, 'show'])->name('user.dashboard');
 
 // edwin
 Route::get('/register-group', function () {
