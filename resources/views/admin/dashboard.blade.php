@@ -64,14 +64,21 @@
             <div class="edit-container">
                 <div class="edit-team-container">
                     <span>Team Name: <span id="edit-team-name-display"></span></span>
-                    <input type="text" id="edit-team" class="edit-team" placeholder="Editable text field">
+                    <input type="text" id="edit-team" class="edit-team" placeholder="(Editable text field)">
                 </div>
 
-                <div class="edit-leader-container">
-                    <span>Leader: <span id="edit-leader-name-display"></span></span>
-                    <input type="text" id="edit-leader" class="edit-leader" placeholder="Editable text field">
-                </div>
+                <div class="leader-info">
+                  <div class="edit-leader-container">
+                      <span>Leader: <span id="edit-leader-name-display"></span></span>
+                      <input type="text" id="edit-leader" class="edit-leader" placeholder="(Editable text field)">
+                  </div>
 
+                  <div class="edit-leader-container">
+                      <span>Email Leader: <span id="edit-leader-email-display"></span></span>
+                      <input type="text" id="edit-leader" class="edit-leader" placeholder="(Editable text field)">
+                  </div>
+                </div>
+        
                 <div class="edit-member-container">
                     <span>Members:</span>
                     <ul id="edit-member-list">
@@ -147,7 +154,10 @@
                     onclick="openEditModal(
                         '{{ $team->team_name }}',
                         {{ json_encode($team->members->where('is_leader', 0)->pluck('name')) }},
-                        '{{ $team->leader->name ?? 'No Leader' }}'
+                        {{ json_encode($team->members->where('is_leader', 0)->pluck('email')) }},
+                        '{{ $team->leader->name ?? 'No Leader' }}',
+                        '{{ $team->leader->email ?? 'No Email' }}',
+                        '{{ $team->id }}'
                     )">
                     Edit
                 </button>
