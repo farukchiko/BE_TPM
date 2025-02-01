@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Admin Dashboard</title>
 
     <!-- CSS -->
@@ -25,8 +27,8 @@
     </div>
     <!-- END LOGOUT -->
 
-     <!-- MODAL DELETE-->
-     <div id="modal-delete" class="modal hidden">
+    <!-- MODAL DELETE-->
+    <div id="modal-delete" class="modal hidden">
       <div class="modal-content-delete">
         <div class="top-content">
           <div class="ic-close">
@@ -38,7 +40,7 @@
             <div class="warn-wrap">
               <img src="../assets/icons/ic-warning.svg" alt="Icon Warning" />
             </div>
-            <p class="text-confirm">Are you sure want to <span>delete</span> Team Rocket?</p>
+            <p class="text-confirm">Are you sure want to <span>delete</span> Team <span id="team-to-delete">?</span>?</p>
           </div>
         </div>
         <div class="bottom-content">
@@ -47,6 +49,42 @@
       </div>
     </div>
     <!-- END MODAL DELETE -->
+
+    <!-- MODAL EDIT -->
+    <div id="modal-edit" class="modal hidden">
+        <div class="modal-content-edit">
+            <div class="top-content">
+                <p class="sub-text">Edit Team</p>
+                <button id="btn-close-edit" class="btn-close-edit">
+                    <img src="../assets/icons/ic-close.svg" alt="Icon Close" id="btn-close" />
+                </button>
+            </div>
+            <p class="team-name" id="edit-team-name">Team Name</p>
+
+            <div class="edit-container">
+                <div class="edit-team-container">
+                    <span>Team Name: <span id="edit-team-name-display"></span></span>
+                    <input type="text" id="edit-team" class="edit-team" placeholder="Editable text field">
+                </div>
+
+                <div class="edit-leader-container">
+                    <span>Leader: <span id="edit-leader-name-display"></span></span>
+                    <input type="text" id="edit-leader" class="edit-leader" placeholder="Editable text field">
+                </div>
+
+                <div class="edit-member-container">
+                    <span>Members:</span>
+                    <ul id="edit-member-list">
+                        <!-- Members will be inserted here -->
+                    </ul>
+                </div>
+            </div>
+
+            <button id="btn-save" class="btn-save">Save Changes</button>
+
+        </div>
+    </div>
+    <!-- END MODAL EDIT -->
 
     <!-- MODAL VIEW-->
     <div id="modal-view" class="modal hidden">
@@ -59,17 +97,15 @@
        </div>
 
        <div class="mid-content">
-        <h4 class="main-text">Team Name: Team Rocket</h4>
+        <h4 class="main-text">Team Name: <span id="view-team-name"></span></h4>
         <div class="member">
           <h4 class="main-text">Members:</h4>
-          <p class="memb-text">Sheren Aura</p>
-          <p class="memb-text">Gojo Satoru</p>
-          <p class="memb-text">Alana Joy</p>
+          <p id="view-members" class="memb-text"></p>
         </div>
        </div>
 
        <div class="regist-on">
-       <p class="sub-text">Register on December 12, 2024</p>
+       <p class="sub-text">Register on <span id="view-registration-date">12 December 2024</span></p>
        </div>
       </div>
     </div>
@@ -101,24 +137,25 @@
           </div>
 
           <div class="list-container">
+            @foreach ($teams as $team)
             <div class="list-team">
-              <h2 class="team-name" id="team-name">Team Rocket</h2>
-              <h2 class="regist-time" id="regist-time">12 Desember 2024</h2>
+              <h2 class="team-name" id="team-name">{{ $team->team_name }}</h2>
+              <h2 class="regist-time" id="regist-time">{{ $team->created_at->format('d M Y') }}</h2>
               <div class="btn-control">
-                <button class="btn-view" id="btn-view">View</button>
-                <button class="btn-edit" id="btn-edit">Edit</button>
-                <button class="btn-delete" id="btn-delete">Delete</button>
+                <button class="btn-view" id="btn-view" onclick="openViewModal('{{ $team->team_name }}', '{{ $team->members->pluck('name')->join(', ') }}', '{{ $team->created_at->format('d M Y') }}')">View</button>
+                <button class="btn-edit" id="btn-edit"
+                    onclick="openEditModal(
+                        '{{ $team->team_name }}',
+                        {{ json_encode($team->members->where('is_leader', 0)->pluck('name')) }},
+                        '{{ $team->leader->name ?? 'No Leader' }}'
+                    )">
+                    Edit
+                </button>
+                <button class="btn-delete" onclick="openDeleteModal('{{ $team->team_name }}', '{{ $team->id }}')">Delete</button>
+
               </div>
             </div>
-            <div class="list-team">
-              <h2 class="team-name" id="team-name">Team Rocket</h2>
-              <h2 class="regist-time" id="regist-time">12 Desember 2024</h2>
-              <div class="btn-control">
-                <button class="btn-view" id="btn-view">View</button>
-                <button class="btn-edit" id="btn-edit">Edit</button>
-                <button class="btn-delete" id="btn-delete">Delete</button>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
       </div>
