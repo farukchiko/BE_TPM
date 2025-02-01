@@ -1,8 +1,46 @@
+// format date
+function formattedDate(date) {
+    console.log("Received date:", date);
+
+    const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
+
+    const dateObj = new Date(date);
+    if (isNaN(dateObj)) {
+        console.error("Invalid date format:", date);
+        return "invalid date";
+    }
+
+    const day = dateObj.getDate();
+    const month = months[dateObj.getMonth()];
+    const year = dateObj.getFullYear();
+
+    const formattedDate = `${month} ${day}, ${year}`;
+    console.log("Formatted date:", formattedDate);
+
+    return formattedDate;
+}
+
 // check login status & integrasi
 const isLoggedIn = localStorage.getItem("isLoggedIn");
 if (isLoggedIn !== "true") {
     window.location.href = "/login";
 }
+
+// ambil team_id dari URL
+const teamId = window.location.pathname.split("/").pop();
 
 async function fetchData(teamId) {
     try {
@@ -24,109 +62,68 @@ async function fetchData(teamId) {
         }
 
         const data = await response.json();
+        console.log("Data:", data);
         populateData(data);
     } catch (error) {
         console.error("There was a problem with the fetch operation:", error);
     }
 }
-
-const teamId = 1;
 fetchData(teamId);
 // end check login status & integrasi
 
 // populate data
 function populateData(data) {
-    // Update detail section
-    const detailSection = [
+    const birthDate = data.leader.birth_date;
+    console.log("bd", birthDate);
+    const formattedBirthDate = formattedDate(birthDate);
+
+    const leaderData = [
+        { label: "Fullname", value: data.leader.name },
+        { label: "Email", value: data.leader.email },
+        { label: "Whatsapp", value: data.leader.phone },
+        { label: "Line ID", value: data.leader.line_id },
+        { label: "Github ID/GitLab ID", value: data.leader.github_id },
+        { label: "Birth Place", value: data.leader.birth_place },
+        { label: "Birth Date", value: formattedBirthDate },
         {
-            icon: "../../assets/icons/ic-person.svg",
-            desc: "Fullname",
-            value: data.leader.name,
+            label: "CV",
+            value: `<a href="${data.cv_url}" target="_blank">View CV</a>`,
         },
         {
-            icon: "../../assets/icons/ic-email.svg",
-            desc: "Email",
-            value: data.leader.email,
-        },
-        {
-            icon: "../../assets/icons/ic-whatsapp.svg",
-            desc: "Whatsapp",
-            value: data.leader.phone,
-        },
-        {
-            icon: "../../assets/icons/ic-line.svg",
-            desc: "Line ID",
-            value: data.leader.line_id,
-        },
-        {
-            icon: "../../assets/icons/ic-github.svg",
-            desc: "Github/GitLab ID",
-            value: data.leader.github_id,
-        },
-        {
-            icon: "../../assets/icons/ic-location.svg",
-            desc: "Birth Place",
-            value: data.leader.birth_place,
-        },
-        {
-            icon: "../../assets/icons/ic-person.svg",
-            desc: "Birth Date",
-            value: data.leader.birth_date,
+            label: "ID Card/Flazz",
+            value: `<a href="${data.id_card_or_flazz_url}" target="_blank">View Card</a>`,
         },
     ];
 
-    const descContainer = document.querySelector(".detail-container");
-    descContainer.innerHTML = ""; // Clear existing content before appending new content
-    detailSection.forEach((detail) => {
-        const detailWrap = document.createElement("div");
-        detailWrap.classList.add("detail-wrap");
+    const leaderContainer = document.querySelector(".detail-container");
+    leaderContainer.innerHTML = "";
+    leaderData.forEach((detail) => {
+        const div = document.createElement("div");
+        div.classList.add("detail-wrap");
 
-        const iconText = document.createElement("div");
-        iconText.classList.add("icon-text");
-
-        const img = document.createElement("img");
-        img.src = detail.icon;
-        img.alt = `Icon ${detail.desc}`;
-
-        const desc = document.createElement("p");
-        desc.classList.add("detail-name");
-        desc.textContent = detail.desc;
-
-        iconText.appendChild(img);
-        iconText.appendChild(desc);
+        const label = document.createElement("p");
+        label.textContent = detail.label;
 
         const value = document.createElement("p");
-        value.classList.add("detail-desc");
         value.textContent = detail.value;
 
-        detailWrap.appendChild(iconText);
-        detailWrap.appendChild(value);
-
-        descContainer.appendChild(detailWrap);
+        div.appendChild(label);
+        div.appendChild(value);
+        leaderContainer.appendChild(div);
     });
 
-    // Update team members section
-    const membContainer = document.querySelector(".member-list-container");
-    membContainer.innerHTML = ""; // Clear existing content before appending new content
+    // update data member
+    const memberContainer = document.querySelector(".member-list-container");
+    memberContainer.innerHTML = "";
     data.members.forEach((member) => {
-        const detailWrap = document.createElement("div");
-        detailWrap.classList.add("detail-wrap-member");
+        const div = document.createElement("div");
+        div.classList.add("detail-wrap-member");
 
-        const iconText = document.createElement("div");
-        iconText.classList.add("icon-text");
+        const memberName = document.createElement("p");
+        memberName.textContent = member.name;
 
-        const img = document.createElement("img");
-        img.src = member.icon;
-        img.alt = `Icon ${member.desc}`;
-
-        const value = document.createElement("p");
-        value.classList.add("member-list");
-        value.textContent = member.name;
-
-        detailWrap.appendChild(iconText);
-        detailWrap.appendChild(value);
-
-        membContainer.appendChild(detailWrap);
+        div.appendChild(memberName);
+        memberContainer.appendChild(div);
     });
 }
 // end populate data

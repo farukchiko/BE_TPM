@@ -104,10 +104,10 @@ btnLogin.addEventListener("click", async function (event) {
             } else {
                 const data = await response.json();
                 if (data.token) {
-                    alert("Login successful!");
+                    alert("Login berhasil!");
                     localStorage.setItem("userToken", data.token);
                     localStorage.setItem("isLoggedIn", "true");
-                    window.location.href = "/user/dashboard";
+                    window.location.href = `/user/dashboard/${data.team.id}`;
                 } else {
                     alert(data.message || "Login failed.");
                 }

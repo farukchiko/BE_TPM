@@ -108,7 +108,7 @@ btnLoginAsAdmin.addEventListener("click", async function (event) {
             } else {
                 const data = await response.json();
                 if (data.token) {
-                    alert("Login successful!");
+                    alert("Login berhasil!");
                     localStorage.setItem("adminToken", data.token);
                     localStorage.setItem("isLoggedIn", "true");
                     window.location.href = "/admin/dashboard";

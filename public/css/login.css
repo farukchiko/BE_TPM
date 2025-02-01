@@ -139,8 +139,7 @@ body {
 }
 
 .form-input.error,
-.input-eyes.error,
-.form-input-pass.error {
+.input-eyes.error {
     border: solid 1px var(--color-error);
     background-color: var(--color-white);
 }
